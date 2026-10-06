@@ -6,8 +6,7 @@
     <title>CB CigarettesBase - Profit Sharing</title>
 
     <link rel="icon" type="image/svg+xml" href="/logo.svg">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon-512.png">
+    <link rel="apple-touch-icon" href="/icon-512.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="CB Profit">
@@ -58,6 +57,8 @@
         .progress-bar-animated { background: linear-gradient(90deg, #34d399, #10b981, #34d399, #10b981); background-size: 200% 100%; animation: progress-scroll 2s linear infinite; }
         @keyframes progress-scroll { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
         .cycle-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 20px; padding: 4px 10px; font-size: 10px; }
+        @keyframes logoFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        .logo-float { animation: logoFloat 3s ease-in-out infinite; }
     </style>
 </head>
 <body class="flex justify-center py-6 px-4 min-h-screen">
@@ -74,23 +75,48 @@
     <!-- ======================= AUTH PAGE ======================= -->
     <div id="auth-page" class="hidden bg-white w-full max-w-md rounded-2xl shadow-xl p-8 relative overflow-hidden flex flex-col justify-center min-h-[600px]">
         <div class="text-center mb-6">
-            <div id="logoClickArea" class="logo-clickable inline-block">
-                <svg viewBox="0 0 200 200" class="w-40 h-40 mx-auto mb-2 drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e3a8a" /><stop offset="100%" stop-color="#3b82f6" /></linearGradient>
-                    <linearGradient id="greenGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669" /><stop offset="100%" stop-color="#10b981" /></linearGradient>
-                  </defs>
-                  <circle cx="100" cy="100" r="95" fill="url(#blueGrad)" />
-                  <circle cx="100" cy="100" r="85" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.2" />
-                  <text x="100" y="120" font-family="'Segoe UI', Roboto, sans-serif" font-size="90" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-4">CB</text>
-                  <path d="M 40 150 L 75 115 L 105 135 L 160 75" fill="none" stroke="url(#greenGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M 160 75 L 135 75 M 160 75 L 160 100" fill="none" stroke="url(#greenGrad)" stroke-width="8" stroke-linecap="round" />
-                  <path d="M 140 45 Q 160 25 170 45 Q 150 65 140 45 Z" fill="#10b981" opacity="0.8" />
-                  <text x="100" y="165" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="2" opacity="0.8">PROFIT SHARING</text>
+            <div id="logoClickArea" class="logo-clickable inline-block logo-float">
+                <svg viewBox="0 0 300 300" class="w-56 h-56 mx-auto mb-3 drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="mainBg" cx="35%" cy="30%" r="80%">
+                            <stop offset="0%" stop-color="#60a5fa"/><stop offset="40%" stop-color="#3b82f6"/><stop offset="70%" stop-color="#1e40af"/><stop offset="100%" stop-color="#1e3a8a"/>
+                        </radialGradient>
+                        <radialGradient id="highlight" cx="35%" cy="25%" r="40%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                        </radialGradient>
+                        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#93c5fd"/><stop offset="50%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1e40af"/></linearGradient>
+                        <linearGradient id="cbGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="50%" stop-color="#f0f9ff"/><stop offset="100%" stop-color="#bae6fd"/></linearGradient>
+                        <linearGradient id="arrowGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669"/><stop offset="50%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+                        <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
+                        <filter id="shadow3D" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dx="3" dy="5" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <ellipse cx="150" cy="285" rx="100" ry="8" fill="#000000" opacity="0.15"/>
+                    <circle cx="150" cy="150" r="138" fill="none" stroke="url(#ringGrad)" stroke-width="8"/>
+                    <circle cx="150" cy="150" r="130" fill="url(#mainBg)" filter="url(#shadow3D)"/>
+                    <ellipse cx="115" cy="95" rx="80" ry="55" fill="url(#highlight)"/>
+                    <circle cx="150" cy="150" r="118" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.3"/>
+                    <g filter="url(#shadow3D)">
+                        <text x="153" y="193" font-family="'Arial Black', 'Segoe UI', sans-serif" font-size="130" font-weight="900" fill="#0f172a" opacity="0.4" text-anchor="middle" letter-spacing="-6">CB</text>
+                        <text x="150" y="190" font-family="'Arial Black', 'Segoe UI', sans-serif" font-size="130" font-weight="900" fill="url(#cbGrad)" text-anchor="middle" letter-spacing="-6">CB</text>
+                        <text x="150" y="188" font-family="'Arial Black', 'Segoe UI', sans-serif" font-size="130" font-weight="900" fill="#ffffff" opacity="0.3" text-anchor="middle" letter-spacing="-6">CB</text>
+                    </g>
+                    <g filter="url(#glow)">
+                        <path d="M 60 235 L 105 190 L 140 220 L 230 130" fill="none" stroke="#047857" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+                        <path d="M 60 233 L 105 188 L 140 218 L 230 128" fill="none" stroke="url(#arrowGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 230 128 L 195 128 M 230 128 L 230 163" fill="none" stroke="url(#arrowGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <g filter="url(#glow)">
+                        <path d="M 215 65 Q 245 40 260 68 Q 235 95 215 65 Z" fill="url(#leafGrad)"/>
+                    </g>
+                    <g transform="translate(150, 245)">
+                        <rect x="-85" y="-12" width="170" height="24" rx="12" fill="#0f172a" opacity="0.85"/>
+                        <text x="0" y="5" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="3">PROFIT SHARING</text>
+                    </g>
                 </svg>
+                <h1 class="text-3xl font-black text-gray-800 tracking-widest mt-2 drop-shadow-md">CIGARETTESBASE</h1>
+                <p class="text-xs font-bold text-blue-600 tracking-[0.5em] mt-2">CIGARETTESBASE PROFIT</p>
             </div>
-            <h1 class="text-2xl font-bold text-gray-800 tracking-wide">CIGARETTESBASE</h1>
-            <p class="text-xs font-semibold text-blue-600 tracking-widest mt-1">CIGARETTESBASE PROFIT</p>
         </div>
 
         <div id="inviterBanner" class="hidden mb-4 bg-gradient-to-r from-purple-100 via-pink-100 to-purple-100 border-2 border-purple-400 rounded-xl p-3 inviter-glow">
@@ -101,7 +127,6 @@
                 <div class="flex-1 min-w-0">
                     <p class="text-[10px] font-medium text-purple-700 uppercase tracking-wide">🎉 Anda Dijemput Oleh</p>
                     <p id="inviterName" class="text-base font-bold text-purple-900 truncate">-</p>
-                    <p class="text-[10px] text-purple-600 mt-0.5">Daftar sekarang untuk mula!</p>
                 </div>
             </div>
         </div>
@@ -126,7 +151,6 @@
             </div>
             <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
                 <p class="text-xs font-bold text-blue-800 mb-2">🔒 Soalan Keselamatan</p>
-                <p class="text-[10px] text-gray-600 mb-2">Untuk reset password jika anda terlupa</p>
                 <select id="regSecurityQuestion" class="w-full p-3 border rounded-lg outline-none text-sm mb-2">
                     <option value="">-- Pilih soalan keselamatan --</option>
                     <option value="nama_ibu">Siapa nama ibu anda?</option>
@@ -136,7 +160,13 @@
                     <option value="sekolah">Nama sekolah rendah anda?</option>
                 </select>
                 <input type="text" id="regSecurityAnswer" placeholder="Jawapan (min 2 aksara)" class="w-full p-3 border rounded-lg outline-none text-sm">
-                <p class="text-[10px] text-orange-600 mt-1">⚠️ Ingat jawapan ini. Ia diperlukan untuk reset password.</p>
+                <p class="text-[10px] text-orange-600 mt-1">⚠️ Ingat jawapan ini untuk reset password.</p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-[10px] text-green-800">
+                <p class="font-bold mb-1">✅ Register FREE:</p>
+                <p>• Boleh sponsor & dapat Bonus Sponsor 10%</p>
+                <p>• Boleh WD bonus bila-bila masa</p>
+                <p>• Untuk Bonus Rep & WD Downline, perlu pakej</p>
             </div>
             <button onclick="handleRegister()" id="registerBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow-md transition mt-2">DAFTAR SEKARANG</button>
             <button onclick="toggleAuthForm('login')" class="w-full text-gray-500 text-sm font-medium mt-2">Kembali ke Login</button>
@@ -178,7 +208,6 @@
                     <p class="text-[10px] font-bold text-yellow-800 mb-1">🔒 SOALAN KESELAMATAN</p>
                     <p id="resetQuestionText" class="text-sm font-semibold text-gray-800">-</p>
                 </div>
-                <label class="block text-xs font-medium text-gray-700 mb-1">Jawapan Anda</label>
                 <input type="text" id="resetAnswerInput" placeholder="Taip jawapan" class="w-full p-3 border rounded-lg outline-none text-sm mb-3" onkeypress="if(event.key==='Enter') resetVerifyAnswer()">
                 <p class="text-[10px] text-red-600 mb-3 text-center">Baki cubaan: <span id="resetAttemptsLeft" class="font-bold">3</span></p>
                 <button onclick="resetVerifyAnswer()" id="resetVerifyBtn" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold text-sm">✅ Sahkan Jawapan</button>
@@ -198,21 +227,20 @@
     <!-- ======================= USER PAGE ======================= -->
     <div id="user-page" class="hidden bg-white w-full max-w-md rounded-2xl shadow-xl p-6 relative overflow-hidden">
         <div class="text-center mb-4 relative z-10">
-            <svg viewBox="0 0 200 200" class="w-20 h-20 mx-auto drop-shadow-lg" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="blueGradTop" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e3a8a" /><stop offset="100%" stop-color="#3b82f6" /></linearGradient>
-                <linearGradient id="greenGradTop" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669" /><stop offset="100%" stop-color="#10b981" /></linearGradient>
-              </defs>
-              <circle cx="100" cy="100" r="95" fill="url(#blueGradTop)" />
-              <circle cx="100" cy="100" r="85" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.2" />
-              <text x="100" y="120" font-family="'Segoe UI', Roboto, sans-serif" font-size="90" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-4">CB</text>
-              <path d="M 40 150 L 75 115 L 105 135 L 160 75" fill="none" stroke="url(#greenGradTop)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M 160 75 L 135 75 M 160 75 L 160 100" fill="none" stroke="url(#greenGradTop)" stroke-width="8" stroke-linecap="round" />
-              <path d="M 140 45 Q 160 25 170 45 Q 150 65 140 45 Z" fill="#10b981" opacity="0.8" />
+            <svg viewBox="0 0 300 300" class="w-24 h-24 mx-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="mainBgS" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#1e3a8a"/></radialGradient>
+                    <linearGradient id="cbGradS" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#bae6fd"/></linearGradient>
+                    <linearGradient id="arrowGradS" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+                </defs>
+                <circle cx="150" cy="150" r="138" fill="none" stroke="#3b82f6" stroke-width="8"/>
+                <circle cx="150" cy="150" r="130" fill="url(#mainBgS)"/>
+                <text x="150" y="190" font-family="'Arial Black', sans-serif" font-size="130" font-weight="900" fill="url(#cbGradS)" text-anchor="middle" letter-spacing="-6">CB</text>
+                <path d="M 60 233 L 105 188 L 140 218 L 230 128" fill="none" stroke="url(#arrowGradS)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 230 128 L 195 128 M 230 128 L 230 163" fill="none" stroke="url(#arrowGradS)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <h1 class="text-lg font-bold text-gray-800 tracking-widest mt-1">CIGARETTESBASE</h1>
+            <h1 class="text-lg font-black text-gray-800 tracking-widest mt-1">CIGARETTESBASE</h1>
             <p class="text-[10px] font-bold text-blue-600 tracking-[0.3em] mt-0.5">PROFIT</p>
-            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mt-2"></div>
         </div>
 
         <div class="flex justify-between items-center mb-4 relative z-10">
@@ -256,6 +284,7 @@
             </div>
         </div>
 
+        <!-- NAVIGASI 5 TAB -->
         <div class="flex justify-around items-center bg-gray-50 p-2 rounded-xl mb-6 relative z-10 border">
             <button onclick="switchTab('dashboard')" id="btn-dashboard" class="tab-btn tooltip p-2 rounded-lg transition bg-blue-500 text-white shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
@@ -305,12 +334,12 @@
 
                 <div id="packageStatus" class="bg-gray-50 p-3 rounded-lg text-center text-gray-500 text-xs border">Memuatkan...</div>
                 <div id="packageProgress" class="hidden">
-                    <div class="flex justify-between text-xs text-gray-600 mb-1"><span>Progress Keseluruhan 180%</span><span id="progressPercent">0%</span></div>
+                    <div class="flex justify-between text-xs text-gray-600 mb-1"><span>Progress 180%</span><span id="progressPercent">0%</span></div>
                     <div class="w-full bg-gray-200 rounded-full h-2"><div id="progressBar" class="bg-gradient-to-r from-blue-500 to-green-500 h-2 rounded-full" style="width: 0%"></div></div>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
-                    <button onclick="openModal('modalWDProfit')" id="btnWDProfit" class="bg-blue-600 text-white font-semibold py-2.5 rounded-xl shadow-md text-xs disabled:opacity-50 disabled:cursor-not-allowed">💰 WD Profit<span class="block text-[9px] opacity-80 mt-0.5">(Setiap 21 hari)</span></button>
-                    <button onclick="openModal('modalWDInsentif')" class="bg-green-600 text-white font-semibold py-2.5 rounded-xl shadow-md text-xs">🎁 WD Insentif<span class="block text-[9px] opacity-80 mt-0.5">(Perlu pakej aktif)</span></button>
+                    <button onclick="openModal('modalWDProfit')" id="btnWDProfit" class="bg-blue-600 text-white font-semibold py-2.5 rounded-xl shadow-md text-xs disabled:opacity-50 disabled:cursor-not-allowed">💰 WD Profit<span class="block text-[9px] opacity-80 mt-0.5">(Perlu pakej)</span></button>
+                    <button onclick="openModal('modalWDInsentif')" class="bg-green-600 text-white font-semibold py-2.5 rounded-xl shadow-md text-xs">🎁 WD Bonus<span class="block text-[9px] opacity-80 mt-0.5">(Bila-bila masa)</span></button>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <button onclick="openModal('modalTopup')" class="bg-blue-600 text-white font-semibold py-2.5 rounded-xl shadow-md text-xs">Topup</button>
@@ -357,7 +386,7 @@
                 <div id="historyList" class="space-y-2"><p class="text-gray-500 text-sm text-center py-4 bg-gray-50 rounded-lg">Tiada sejarah.</p></div>
             </div>
 
-            <!-- PROFILE (DENGAN MAKLUMAT PEWARIS) -->
+            <!-- PROFILE -->
             <div id="tab-profile" class="tab-content space-y-4">
                 <div class="bg-gray-50 p-4 rounded-lg border">
                     <h3 class="font-bold text-gray-800 mb-3 border-b pb-2 text-sm">Maklumat Peribadi</h3>
@@ -367,12 +396,12 @@
                         <p><span class="font-medium text-gray-500 w-24 inline-block">Username:</span> <span id="profileUsername" class="font-semibold text-blue-600">-</span></p>
                     </div>
                 </div>
+
                 <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-lg border-2 border-amber-300">
                     <h3 class="font-bold text-amber-800 mb-3 border-b border-amber-200 pb-2 text-sm flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                         👨‍👩‍👧 Maklumat Pewaris
                     </h3>
-                    <p class="text-[10px] text-amber-700 mb-3">⚠️ Untuk tujuan keselamatan akaun.</p>
                     <label class="block text-xs font-medium text-gray-700 mb-1">Nama Penuh Pewaris</label>
                     <input type="text" id="heirNameInput" placeholder="Cth: Fatimah binti Abdullah" class="w-full p-3 border rounded-lg outline-none text-sm mb-3">
                     <label class="block text-xs font-medium text-gray-700 mb-1">Hubungan</label>
@@ -391,6 +420,7 @@
                     <input type="tel" id="heirPhoneInput" placeholder="Cth: 0123456789" class="w-full p-3 border rounded-lg outline-none text-sm mb-3">
                     <button onclick="saveHeirInfo()" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg font-bold text-sm">💾 Simpan Maklumat Pewaris</button>
                 </div>
+
                 <div class="bg-gray-50 p-4 rounded-lg border">
                     <h3 class="font-bold text-gray-800 mb-3 border-b pb-2 text-sm">Kemaskini Maklumat Bank</h3>
                     <label class="block text-xs font-medium text-gray-700 mb-1">Nama Bank</label>
@@ -407,6 +437,20 @@
                     </div>
                     <button onclick="saveProfile()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold text-sm">💾 Simpan Maklumat Bank</button>
                 </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 rounded-lg border-2 border-blue-300">
+                    <h3 class="font-bold text-blue-800 mb-3 border-b border-blue-200 pb-2 text-sm flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                        🔐 Tukar Password
+                    </h3>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">Password Semasa</label>
+                    <input type="password" id="currentPasswordInput" placeholder="Password semasa" class="w-full p-3 border rounded-lg outline-none text-sm mb-3">
+                    <label class="block text-xs font-medium text-gray-700 mb-1">Password Baru (min 6)</label>
+                    <input type="password" id="newPasswordInput" placeholder="Password baru" class="w-full p-3 border rounded-lg outline-none text-sm mb-3">
+                    <label class="block text-xs font-medium text-gray-700 mb-1">Ulang Password Baru</label>
+                    <input type="password" id="confirmPasswordInput" placeholder="Ulang password baru" class="w-full p-3 border rounded-lg outline-none text-sm mb-3" onkeypress="if(event.key==='Enter') changeUserPassword()">
+                    <button onclick="changeUserPassword()" id="changePasswordBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold text-sm">🔐 Tukar Password</button>
+                </div>
             </div>
 
             <!-- REFERRAL -->
@@ -414,6 +458,7 @@
                 <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white p-5 rounded-xl shadow-md text-center">
                     <p class="text-xs opacity-90 mb-1">🎁 Jemput Kawan Anda</p>
                     <p class="text-lg font-bold mb-1">Dapat Bonus Sponsor 10%</p>
+                    <p class="text-[10px] opacity-80 mt-2">Register FREE pun boleh taja!</p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg border">
                     <h3 class="font-bold text-gray-800 mb-2 border-b pb-2 text-sm">🔑 Kod Referral Anda</h3>
@@ -430,15 +475,16 @@
                     </div>
                     <div class="bg-white rounded-lg p-2 text-[10px] text-gray-600 border">
                         <p class="font-bold text-purple-700 mb-1">💡 Contoh mesej:</p>
-                        <p class="italic">"Join CB Profit Sharing. Pulangan 180% dalam 63 hari. Daftar: <span id="referralLinkPreview" class="text-blue-600 break-all">-</span>"</p>
+                        <p class="italic">"Join CB Profit Sharing. Daftar FREE, boleh sponsor & kumpul bonus. Pulangan 180% dalam 63 hari. Daftar: <span id="referralLinkPreview" class="text-blue-600 break-all">-</span>"</p>
                     </div>
                 </div>
                 <div class="bg-blue-50 text-left p-3 rounded text-xs space-y-1">
-                    <p class="font-bold text-blue-800 mb-1">📋 Info:</p>
-                    <p>✅ Profit harian live</p>
-                    <p>✅ WD setiap 21 hari (3x = 180%)</p>
-                    <p>✅ P2P transfer via Wallet Insentif</p>
-                    <p>💎 Bonus WD Downline 5% - Perlu pakej ≥RM1000</p>
+                    <p class="font-bold text-blue-800 mb-1">📋 Info Bonus:</p>
+                    <p>✅ Bonus Sponsor 10% - Semua user (Free/Berpakej)</p>
+                    <p>✅ Bonus Rep 5% - Perlu pakej RM100+</p>
+                    <p>✅ Bonus WD Downline 5% - Perlu pakej RM1,000+</p>
+                    <p>💰 Semua bonus boleh WD bila-bila masa</p>
+                    <p>📈 Profit harian + WD 3 kali (180%)</p>
                 </div>
             </div>
         </div>
@@ -450,9 +496,9 @@
                 <h3 class="text-xl font-bold mb-2 text-gray-800">Aktifkan Pakej</h3>
                 <p class="text-xs text-gray-500 mb-4">Profit harian + WD 3 kali = <b>180%</b></p>
                 <div class="space-y-4">
-                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Jumlah (RM300 - RM100,000)</label><input type="number" id="pakejAmount" min="300" max="100000" step="1" class="w-full p-3 border rounded-lg outline-none" placeholder="Cth: 1000"><p id="renewalNote" class="text-[10px] text-orange-500 mt-1 hidden"></p></div>
+                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Jumlah (RM100 - RM100,000)</label><input type="number" id="pakejAmount" min="100" max="100000" step="1" class="w-full p-3 border rounded-lg outline-none" placeholder="Cth: 1000"><p id="renewalNote" class="text-[10px] text-orange-500 mt-1 hidden"></p></div>
                     <div><label class="block text-sm font-medium text-gray-700 mb-1">Username Sponsor (10%)</label><input type="text" id="sponsorUser" class="w-full p-3 border rounded-lg outline-none" placeholder="Username Sponsor"></div>
-                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Username Representative (5%) - Optional</label><input type="text" id="repUser" class="w-full p-3 border rounded-lg outline-none" placeholder="(Kosongkan jika tiada)"></div>
+                    <div><label class="block text-sm font-medium text-gray-700 mb-1">Username Representative (5%)</label><input type="text" id="repUser" class="w-full p-3 border rounded-lg outline-none" placeholder="Kosongkan jika tiada"><p class="text-[9px] text-gray-500 mt-1">Anda perlu ada pakej untuk dapatkan Bonus Rep</p></div>
                     <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-xs text-blue-800 space-y-1">
                         <p class="font-bold mb-1">📊 Pengiraan:</p>
                         <p>• Pulangan 180%: <span id="previewTotal" class="font-bold">RM0.00</span></p>
@@ -473,7 +519,6 @@
                     <p class="text-xs font-bold text-blue-700 mb-3">📱 QR DuitNow Admin</p>
                     <div class="flex justify-center">
                         <div id="adminQRPlaceholderBox" class="qr-box bg-gray-200 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
                             <span class="text-gray-400 text-xs">QR belum diset</span>
                         </div>
                         <div id="adminQRImageBox" class="hidden bg-white rounded-lg p-2 border-2 border-blue-400 shadow-md"><img id="adminQRImage" class="qr-box rounded object-contain" alt="QR Admin" /></div>
@@ -508,21 +553,21 @@
                 <div id="wdProfitBreakdown" class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 space-y-1 text-xs hidden">
                     <div class="flex justify-between py-1 border-b border-yellow-200"><span>Gross:</span><span id="wdProfitGross" class="font-bold text-blue-700">RM 0.00</span></div>
                     <div class="flex justify-between py-1 border-b border-yellow-200"><span>Caj (<span id="wdProfitRate">10</span>%):</span><span id="wdProfitCharge" class="font-bold text-red-600">- RM 0.00</span></div>
-                    <div class="flex justify-between py-2 bg-white rounded px-2 mt-2"><span class="font-bold">✅ Anda Terima:</span><span id="wdProfitNet" class="font-bold text-green-700">RM 0.00</span></div>
+                    <div class="flex justify-between py-2 bg-white rounded px-2 mt-2"><span class="font-bold">✅ Terima:</span><span id="wdProfitNet" class="font-bold text-green-700">RM 0.00</span></div>
                 </div>
                 <div id="wdProfitBankStatus" class="bg-red-50 p-3 rounded-lg text-red-700 text-sm mb-4">Sila set Bank dahulu!</div>
                 <button type="button" onclick="handleWDProfit()" id="btnWDSubmit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold disabled:opacity-50">Hantar WD Profit</button>
             </div>
         </div>
 
-        <!-- MODAL WD INSENTIF -->
+        <!-- MODAL WD BONUS (INSENTIF) -->
         <div id="modalWDInsentif" class="modal fixed inset-0 bg-black bg-opacity-50 justify-center items-center p-4 z-50">
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto">
                 <button onclick="closeModal('modalWDInsentif')" class="absolute top-4 right-4 text-gray-400">✕</button>
-                <h3 class="text-xl font-bold mb-2 text-green-600 text-center">🎁 WD Insentif</h3>
-                <p class="text-xs text-gray-500 mb-4 text-center">Syarat: Pakej aktif min RM300</p>
-                <div class="bg-green-50 p-3 rounded-lg text-sm mb-4"><p class="text-gray-600 text-xs">Baki Insentif:</p><p id="wdInsentifBalance" class="text-2xl font-bold text-green-700">RM 0.00</p></div>
-                <div id="wdInsentifAlert" class="text-xs p-3 rounded-lg mb-4 bg-yellow-50 text-yellow-800 border border-yellow-200">⚠️ Sila pastikan anda ada pakej aktif min RM300.</div>
+                <h3 class="text-xl font-bold mb-2 text-green-600 text-center">🎁 WD Bonus</h3>
+                <p class="text-xs text-gray-500 mb-4 text-center">Boleh WD bila-bila masa</p>
+                <div class="bg-green-50 p-3 rounded-lg text-sm mb-4"><p class="text-gray-600 text-xs">Baki Bonus (Insentif):</p><p id="wdInsentifBalance" class="text-2xl font-bold text-green-700">RM 0.00</p></div>
+                <div id="wdInsentifAlert" class="text-xs p-3 rounded-lg mb-4 bg-green-50 text-green-800 border border-green-200">✅ Boleh WD bonus bila-bila masa.</div>
                 <input type="number" id="wdInsentifAmount" placeholder="Jumlah WD (RM)" class="w-full p-3 border rounded-lg text-center mb-3" oninput="updateWDInsentifBreakdown()">
                 <div id="wdInsentifBreakdown" class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 space-y-1 text-xs hidden">
                     <div class="flex justify-between py-1 border-b border-yellow-200"><span>Gross:</span><span id="wdInsentifGross" class="font-bold text-blue-700">RM 0.00</span></div>
@@ -530,11 +575,11 @@
                     <div class="flex justify-between py-2 bg-white rounded px-2 mt-2"><span class="font-bold">✅ Terima:</span><span id="wdInsentifNet" class="font-bold text-green-700">RM 0.00</span></div>
                 </div>
                 <div id="wdInsentifBankStatus" class="bg-red-50 p-3 rounded-lg text-red-700 text-sm mb-4">Sila set Bank dahulu!</div>
-                <button type="button" onclick="handleWDInsentif()" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold">Hantar WD Insentif</button>
+                <button type="button" onclick="handleWDInsentif()" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold">Hantar WD Bonus</button>
             </div>
         </div>
 
-        <!-- MODAL P2P TRANSFER -->
+        <!-- MODAL P2P -->
         <div id="modalP2P" class="modal fixed inset-0 bg-black bg-opacity-50 justify-center items-center p-4 z-50">
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto">
                 <button onclick="closeModal('modalP2P')" class="absolute top-4 right-4 text-gray-400 z-10">✕</button>
@@ -543,25 +588,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800">Transfer P2P</h3>
-                    <p class="text-xs text-gray-500 mt-1">Pindah kredit dari Wallet Insentif anda ke Wallet Utama user lain</p>
                 </div>
                 <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
-                    <div class="flex justify-between items-center">
-                        <div><p class="text-[10px] text-gray-600">Baki Wallet Insentif Anda</p><p id="p2pSenderBalance" class="text-xl font-bold text-green-700">RM 0.00</p></div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    </div>
-                </div>
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-xs">
-                    <p class="font-bold text-blue-800 mb-2">💡 Cara P2P:</p>
-                    <p class="text-gray-700 mb-1">1. Anda transfer dari <b>Wallet Insentif</b></p>
-                    <p class="text-gray-700 mb-1">2. Penerima terima di <b>Wallet Utama</b></p>
-                    <p class="text-gray-700">3. Penerima boleh guna untuk aktif pakej/topup</p>
+                    <div><p class="text-[10px] text-gray-600">Baki Wallet Insentif</p><p id="p2pSenderBalance" class="text-xl font-bold text-green-700">RM 0.00</p></div>
                 </div>
                 <div class="space-y-3">
                     <div><label class="block text-xs font-medium text-gray-700 mb-1">Username Penerima</label><input type="text" id="p2pRecipient" placeholder="Cth: ahmad" class="w-full p-3 border rounded-lg outline-none text-sm lowercase" oninput="this.value = this.value.toLowerCase()"></div>
-                    <div><label class="block text-xs font-medium text-gray-700 mb-1">Jumlah (RM)</label><input type="number" id="p2pAmount" placeholder="Cth: 100" min="1" step="0.01" class="w-full p-3 border rounded-lg outline-none text-sm font-bold text-center"><p class="text-[10px] text-gray-500 mt-1">Minimum: RM1</p></div>
+                    <div><label class="block text-xs font-medium text-gray-700 mb-1">Jumlah (RM)</label><input type="number" id="p2pAmount" placeholder="Cth: 100" min="1" step="0.01" class="w-full p-3 border rounded-lg outline-none text-sm font-bold text-center"></div>
                     <div><label class="block text-xs font-medium text-gray-700 mb-1">Nota (Optional)</label><input type="text" id="p2pNote" placeholder="Cth: Bantu aktif pakej" maxlength="50" class="w-full p-3 border rounded-lg outline-none text-sm"></div>
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-xs"><p class="text-yellow-800"><b>⚠️ Penting:</b> Kredit tidak boleh ditarik balik kecuali admin.</p></div>
                     <button type="button" onclick="handleP2PTransfer()" id="p2pSubmitBtn" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-bold">💸 Transfer Sekarang</button>
                 </div>
             </div>
@@ -572,10 +606,16 @@
     <div id="admin-page" class="hidden bg-white w-full max-w-3xl rounded-2xl shadow-xl p-6 relative overflow-hidden">
         <div class="flex justify-between items-center mb-6 border-b pb-4">
             <div class="flex items-center gap-3">
-                <svg viewBox="0 0 200 200" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
-                  <defs><linearGradient id="blueGradAdmin" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e3a8a" /><stop offset="100%" stop-color="#3b82f6" /></linearGradient></defs>
-                  <circle cx="100" cy="100" r="95" fill="url(#blueGradAdmin)" />
-                  <text x="100" y="125" font-family="'Segoe UI', Roboto, sans-serif" font-size="100" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-5">CB</text>
+                <svg viewBox="0 0 300 300" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="mainBgA" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#1e3a8a"/></radialGradient>
+                        <linearGradient id="cbGradA" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#bae6fd"/></linearGradient>
+                        <linearGradient id="arrowGradA" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+                    </defs>
+                    <circle cx="150" cy="150" r="140" fill="none" stroke="#3b82f6" stroke-width="10"/>
+                    <circle cx="150" cy="150" r="130" fill="url(#mainBgA)"/>
+                    <text x="150" y="195" font-family="'Arial Black', sans-serif" font-size="140" font-weight="900" fill="url(#cbGradA)" text-anchor="middle" letter-spacing="-8">CB</text>
+                    <path d="M 60 233 L 105 188 L 140 218 L 230 128" fill="none" stroke="url(#arrowGradA)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <div><h1 class="text-xl font-bold text-gray-800">Admin Panel</h1><p class="text-xs text-gray-500">CigarettesBase Profit</p></div>
             </div>
@@ -589,65 +629,60 @@
         </div>
 
         <div class="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 rounded-xl p-4 mb-6">
-            <h2 class="font-bold text-red-800 flex items-center gap-2 mb-2">💰 Caj Servis WD</h2>
+            <h2 class="font-bold text-red-800 mb-2">💰 Caj Servis WD</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
-                <div class="md:col-span-2"><label class="block text-xs font-medium text-gray-700 mb-1">Peratusan Caj Servis (%)</label><input type="number" id="serviceChargePercent" min="0" max="50" step="0.5" class="w-full p-2 border rounded-lg text-sm outline-none font-bold text-lg"></div>
+                <div class="md:col-span-2"><label class="block text-xs font-medium text-gray-700 mb-1">Peratusan (%)</label><input type="number" id="serviceChargePercent" min="0" max="50" step="0.5" class="w-full p-2 border rounded-lg text-sm outline-none font-bold text-lg"></div>
                 <button onclick="saveServiceCharge()" class="bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-lg font-bold text-sm">💾 Simpan</button>
             </div>
             <div class="mt-3 bg-white rounded p-2 text-xs"><p>WD RM100 → User: <b class="text-green-700">RM<span id="adminExampleNet">90.00</span></b> | Admin: <b class="text-red-600">RM<span id="adminExampleCharge">10.00</span></b></p></div>
         </div>
 
-        <!-- ADJUST CREDIT MANUAL -->
         <div class="bg-gradient-to-r from-teal-50 to-cyan-50 border-2 border-teal-300 rounded-xl p-4 mb-6">
-            <h2 class="font-bold text-teal-800 flex items-center gap-2 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                💳 Adjust Credit Manual
-            </h2>
-            <p class="text-xs text-gray-600 mb-3">Tambah/tolak kredit user untuk pembetulan, promosi, atau tarik balik kredit.</p>
+            <h2 class="font-bold text-teal-800 mb-3">💳 Adjust Credit Manual</h2>
             <div class="space-y-3">
-                <div><label class="block text-xs font-medium text-gray-700 mb-1">Username User</label><input type="text" id="adjustUsername" placeholder="Cth: ahmad" class="w-full p-2 border rounded-lg text-sm outline-none lowercase" oninput="this.value = this.value.toLowerCase()"></div>
+                <div><label class="block text-xs font-medium text-gray-700 mb-1">Username</label><input type="text" id="adjustUsername" placeholder="Cth: ahmad" class="w-full p-2 border rounded-lg text-sm outline-none lowercase" oninput="this.value = this.value.toLowerCase()"></div>
                 <div class="grid grid-cols-2 gap-2">
-                    <div><label class="block text-xs font-medium text-gray-700 mb-1">Wallet</label><select id="adjustWalletType" class="w-full p-2 border rounded-lg text-sm outline-none"><option value="balance">💰 Wallet Utama</option><option value="insentifBalance">🎁 Wallet Insentif</option></select></div>
+                    <div><label class="block text-xs font-medium text-gray-700 mb-1">Wallet</label><select id="adjustWalletType" class="w-full p-2 border rounded-lg text-sm outline-none"><option value="balance">💰 Utama</option><option value="insentifBalance">🎁 Insentif</option></select></div>
                     <div><label class="block text-xs font-medium text-gray-700 mb-1">Aksi</label><select id="adjustAction" class="w-full p-2 border rounded-lg text-sm outline-none"><option value="add">➕ Tambah</option><option value="deduct">➖ Tolak</option></select></div>
                 </div>
                 <div><label class="block text-xs font-medium text-gray-700 mb-1">Jumlah (RM)</label><input type="number" id="adjustAmount" placeholder="Cth: 100" min="0.01" step="0.01" class="w-full p-2 border rounded-lg text-sm outline-none font-bold text-center"></div>
-                <div><label class="block text-xs font-medium text-gray-700 mb-1">Sebab / Nota</label><input type="text" id="adjustReason" placeholder="Cth: Promosi Raya / Tarik balik salah transfer" maxlength="80" class="w-full p-2 border rounded-lg text-sm outline-none"></div>
-                <button onclick="adminAdjustCredit()" id="adjustCreditBtn" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-2.5 rounded-lg font-bold text-sm">✅ Laksanakan Adjust</button>
+                <div><label class="block text-xs font-medium text-gray-700 mb-1">Sebab</label><input type="text" id="adjustReason" placeholder="Cth: Promosi" maxlength="80" class="w-full p-2 border rounded-lg text-sm outline-none"></div>
+                <button onclick="adminAdjustCredit()" id="adjustCreditBtn" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-2.5 rounded-lg font-bold text-sm">✅ Laksanakan</button>
             </div>
             <div class="mt-4 pt-3 border-t border-teal-200">
-                <p class="text-xs font-bold text-teal-800 mb-2">📜 Rekod Adjustment:</p>
+                <p class="text-xs font-bold text-teal-800 mb-2">📜 Rekod:</p>
                 <div id="adjustmentLog" class="space-y-1 max-h-40 overflow-y-auto"><p class="text-[10px] text-gray-400 text-center py-2">Tiada rekod.</p></div>
             </div>
         </div>
 
         <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-xl p-4 mb-6">
             <h2 class="font-bold text-purple-800 mb-2">📢 Hantar Pengumuman</h2>
-            <input type="text" id="broadcastTitle" placeholder="Tajuk Pengumuman" class="w-full p-2 border rounded-lg text-sm outline-none mb-2">
-            <textarea id="broadcastMessage" rows="2" placeholder="Mesej penuh..." class="w-full p-2 border rounded-lg text-sm outline-none mb-2"></textarea>
-            <button onclick="sendBroadcast()" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-bold text-sm">📢 Hantar ke Semua User</button>
+            <input type="text" id="broadcastTitle" placeholder="Tajuk" class="w-full p-2 border rounded-lg text-sm outline-none mb-2">
+            <textarea id="broadcastMessage" rows="2" placeholder="Mesej..." class="w-full p-2 border rounded-lg text-sm outline-none mb-2"></textarea>
+            <button onclick="sendBroadcast()" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-bold text-sm">📢 Hantar</button>
             <div class="mt-4">
-                <p class="text-xs font-bold text-purple-800 mb-2">📋 Pengumuman Aktif:</p>
-                <div id="broadcastList" class="space-y-2 max-h-40 overflow-y-auto"><p class="text-xs text-gray-400 text-center py-2">Tiada pengumuman.</p></div>
+                <p class="text-xs font-bold text-purple-800 mb-2">📋 Aktif:</p>
+                <div id="broadcastList" class="space-y-2 max-h-40 overflow-y-auto"><p class="text-xs text-gray-400 text-center py-2">Tiada.</p></div>
             </div>
         </div>
 
         <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-4 mb-6">
             <div class="flex justify-between items-center mb-3 border-b border-blue-200 pb-2">
-                <h2 class="font-bold text-blue-800 flex items-center gap-2">⚙️ Tetapan Pembayaran Topup</h2>
+                <h2 class="font-bold text-blue-800">⚙️ Tetapan Pembayaran</h2>
                 <button onclick="toggleAdminSettings()" class="text-xs text-blue-600 font-bold">▼ Tukar</button>
             </div>
             <div id="adminSettingsContent">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-                    <div><label class="block text-xs font-medium text-gray-700 mb-1">Nama Bank</label><input type="text" id="adminBankName" placeholder="Cth: Maybank" class="w-full p-2 border rounded-lg text-sm outline-none"></div>
-                    <div><label class="block text-xs font-medium text-gray-700 mb-1">No. Akaun</label><input type="text" id="adminAccountNo" placeholder="Cth: 5123456789" class="w-full p-2 border rounded-lg text-sm outline-none font-mono"></div>
-                    <div class="md:col-span-2"><label class="block text-xs font-medium text-gray-700 mb-1">Nama Penerima</label><input type="text" id="adminAccountName" placeholder="Cth: Ahmad bin Abdullah" class="w-full p-2 border rounded-lg text-sm outline-none"></div>
+                    <div><label class="block text-xs font-medium text-gray-700 mb-1">Nama Bank</label><input type="text" id="adminBankName" placeholder="Maybank" class="w-full p-2 border rounded-lg text-sm outline-none"></div>
+                    <div><label class="block text-xs font-medium text-gray-700 mb-1">No. Akaun</label><input type="text" id="adminAccountNo" placeholder="5123456789" class="w-full p-2 border rounded-lg text-sm outline-none font-mono"></div>
+                    <div class="md:col-span-2"><label class="block text-xs font-medium text-gray-700 mb-1">Nama Penerima</label><input type="text" id="adminAccountName" placeholder="Ahmad bin Abdullah" class="w-full p-2 border rounded-lg text-sm outline-none"></div>
                 </div>
-                <label class="block text-xs font-medium text-gray-700 mb-1">QR DuitNow Admin</label>
+                <label class="block text-xs font-medium text-gray-700 mb-1">QR DuitNow</label>
                 <div class="border-2 border-dashed border-blue-300 rounded-lg p-3 bg-white text-center mb-3">
                     <input type="file" id="adminQRUpload" accept="image/*" class="text-xs w-full" onchange="handleAdminQRUpload(event)">
-                    <div id="adminQRPreviewContainer" class="hidden mt-2"><img id="adminQRPreview" class="w-32 h-32 mx-auto rounded border-2 border-blue-400 object-contain" /><p class="text-xs text-blue-600 mt-1 font-medium">✓ QR Sedia</p></div>
+                    <div id="adminQRPreviewContainer" class="hidden mt-2"><img id="adminQRPreview" class="w-32 h-32 mx-auto rounded border-2 border-blue-400 object-contain" /><p class="text-xs text-blue-600 mt-1">✓ QR Sedia</p></div>
                 </div>
-                <button onclick="saveAdminSettings()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold text-sm">💾 Simpan Tetapan</button>
+                <button onclick="saveAdminSettings()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold text-sm">💾 Simpan</button>
             </div>
         </div>
 
@@ -658,17 +693,15 @@
 
         <div class="space-y-4">
             <h2 class="font-bold text-gray-700 border-b pb-2">Permohonan Menunggu:</h2>
-            <div id="adminRequestList" class="space-y-3"><p class="text-gray-500 text-sm text-center py-4 bg-gray-50 rounded-lg">Tiada permohonan.</p></div>
+            <div id="adminRequestList" class="space-y-3"><p class="text-gray-500 text-sm text-center py-4 bg-gray-50 rounded-lg">Tiada.</p></div>
         </div>
     </div>
 
     <!-- FIREBASE SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword } 
-            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs, updateDoc, onSnapshot, addDoc, arrayUnion, deleteDoc, orderBy, limit } 
-            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs, updateDoc, onSnapshot, addDoc, arrayUnion, deleteDoc, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDrtYcur-4XDOl9G6YOdR2xAWXCmDIx0gs",
@@ -685,7 +718,7 @@
 
         window.auth = auth;
         window.db = db;
-        window.FB = { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword, doc, setDoc, getDoc, collection, query, where, getDocs, updateDoc, onSnapshot, addDoc, arrayUnion, deleteDoc, orderBy, limit };
+        window.FB = { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword, doc, setDoc, getDoc, collection, query, where, getDocs, updateDoc, onSnapshot, addDoc, arrayUnion, deleteDoc, orderBy, limit, serverTimestamp };
 
         setTimeout(() => { document.getElementById('loading-screen').classList.add('hidden'); }, 800);
 
@@ -698,6 +731,13 @@
     </script>
 
     <script>
+        const SafeStorage = {
+            get(key) { try { return sessionStorage.getItem(key); } catch(e) { return SafeStorage._memory[key] || null; } },
+            set(key, value) { try { sessionStorage.setItem(key, value); } catch(e) { SafeStorage._memory[key] = value; } },
+            remove(key) { try { sessionStorage.removeItem(key); } catch(e) { delete SafeStorage._memory[key]; } },
+            _memory: {}
+        };
+
         let currentUser = null;
         let balance = 0;
         let insentifBalance = 0;
@@ -717,18 +757,14 @@
         function encodeAnswer(str) { return encodePass(str.toLowerCase().trim()); }
         function decodeAnswer(str) { try { return decodePass(str).toLowerCase().trim(); } catch(e) { return str.toLowerCase().trim(); } }
 
-        // ==================== LIVE PROFIT COUNTER ====================
+        // ==================== LIVE PROFIT ====================
         function startLiveCounter() {
             if (liveCounterInterval) clearInterval(liveCounterInterval);
             liveCounterInterval = setInterval(() => {
-                if (currentUser && packageData && packageData.status === 'active' && currentUser.role !== 'admin') {
-                    updateLiveProfitDisplay();
-                }
+                if (currentUser && packageData && packageData.status === 'active' && currentUser.role !== 'admin') { updateLiveProfitDisplay(); }
             }, 1000);
         }
-        function stopLiveCounter() {
-            if (liveCounterInterval) { clearInterval(liveCounterInterval); liveCounterInterval = null; }
-        }
+        function stopLiveCounter() { if (liveCounterInterval) { clearInterval(liveCounterInterval); liveCounterInterval = null; } }
 
         function updateLiveProfitDisplay() {
             if (!packageData || packageData.status !== 'active') return;
@@ -763,98 +799,141 @@
                 btnWDProfit.disabled = true;
             } else if (cycleDays >= 21) {
                 wdStatusBox.className = 'mt-3 bg-yellow-400 bg-opacity-90 text-yellow-900 rounded-lg p-2 text-center text-[11px] relative z-10 font-bold';
-                wdStatusBox.innerHTML = `✅ SEDIA WD! Klik butang WD Profit`;
+                wdStatusBox.innerHTML = `✅ SEDIA WD!`;
                 btnWDProfit.disabled = false;
             } else {
                 wdStatusBox.className = 'mt-3 bg-white bg-opacity-20 rounded-lg p-2 text-center text-[11px] relative z-10';
                 wdStatusBox.innerHTML = `⏳ Sedia WD dalam <span class="font-bold">${Math.ceil(21 - cycleDays)}</span> hari`;
                 btnWDProfit.disabled = true;
             }
-            
-            if (document.getElementById('modalWDProfit').classList.contains('active')) {
-                const wdAccEl = document.getElementById('wdLiveAccumulated');
-                const wdDayEl = document.getElementById('wdLiveDay');
-                const wdStatEl = document.getElementById('wdLiveStatus');
-                if (wdAccEl) wdAccEl.innerText = `RM ${cycleEarned.toFixed(2)}`;
-                if (wdDayEl) wdDayEl.innerText = `${Math.floor(cycleDays)}/21`;
-                if (wdStatEl) {
-                    if (cycleDays >= 21) { wdStatEl.className = 'text-xs font-bold text-green-600'; wdStatEl.innerText = '✅ Sedia'; }
-                    else { wdStatEl.className = 'text-xs font-bold text-yellow-600'; wdStatEl.innerText = '⏳ Menunggu'; }
-                }
-            }
         }
 
-        // ==================== P2P TRANSFER ====================
-        async function handleP2PTransfer() {
+        // ==================== TUKAR PASSWORD ====================
+        async function changeUserPassword() {
             if (!currentUser) { alert('❌ Sila login.'); return; }
-            const recipient = document.getElementById('p2pRecipient').value.trim().toLowerCase();
-            const amount = parseFloat(document.getElementById('p2pAmount').value);
-            const note = document.getElementById('p2pNote').value.trim();
+            const currentPassword = document.getElementById('currentPasswordInput').value.trim();
+            const newPassword = document.getElementById('newPasswordInput').value.trim();
+            const confirmPassword = document.getElementById('confirmPasswordInput').value.trim();
             
-            if (!recipient) { alert('❌ Sila masukkan username penerima.'); return; }
-            if (recipient === currentUser.username) { alert('❌ Tidak boleh transfer ke diri sendiri.'); return; }
-            if (isNaN(amount) || amount < 1) { alert('❌ Minimum transfer: RM1.'); return; }
-            if (amount > insentifBalance) { alert(`❌ Baki tidak mencukupi.\n\nBaki: RM${insentifBalance.toFixed(2)}\nTransfer: RM${amount.toFixed(2)}`); return; }
+            if (!currentPassword) { alert('❌ Sila masukkan password semasa.'); return; }
+            if (!newPassword || newPassword.length < 6) { alert('❌ Password baru minimum 6 aksara.'); return; }
+            if (newPassword !== confirmPassword) { alert('❌ Password tidak sepadan.'); return; }
+            if (newPassword === currentPassword) { alert('❌ Password baru sama dengan lama.'); return; }
             
-            const confirmMsg = `📤 Sahkan transfer:\n\n💸 Kepada: @${recipient}\n💰 Jumlah: RM${amount.toFixed(2)}\n📝 Nota: ${note || '-'}\n\n⚠️ Tidak boleh ditarik balik.\n\nTeruskan?`;
-            if (!confirm(confirmMsg)) return;
-            
-            const btn = document.getElementById('p2pSubmitBtn');
+            const btn = document.getElementById('changePasswordBtn');
             btn.disabled = true; btn.innerText = 'Memproses...';
+            window.isResettingPassword = true;
             
             try {
-                const { doc, getDoc, updateDoc, collection, query, where, getDocs } = window.FB;
-                const recipientQ = query(collection(window.db, "cb_users"), where("username", "==", recipient));
-                const recipientSnap = await getDocs(recipientQ);
+                const { doc, getDoc, updateDoc, signInWithEmailAndPassword, signOut, updatePassword } = window.FB;
+                const userRef = doc(window.db, "cb_users", currentUser.uid);
+                const userSnap = await getDoc(userRef);
+                if (!userSnap.exists()) { alert('❌ Akaun tidak dijumpai.'); return; }
+                const userData = userSnap.data();
+                const storedPassword = decodePass(userData._passwordBackup);
                 
-                if (recipientSnap.empty) { alert('❌ Username penerima tidak dijumpai.'); playErrorSound(); return; }
-                const recipientDoc = recipientSnap.docs[0];
-                const recipientData = recipientDoc.data();
-                if (recipientData.role === 'admin') { alert('❌ Tidak boleh transfer kepada admin.'); return; }
+                if (currentPassword !== storedPassword) { alert('❌ Password semasa salah.'); playErrorSound(); return; }
                 
-                const senderNewInsentif = insentifBalance - amount;
-                const recipientNewBalance = (recipientData.balance || 0) + amount;
-                const dateStr = new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' });
+                const email = currentUser.username + "@cbprofit.app";
+                const userCredential = await signInWithEmailAndPassword(window.auth, email, currentPassword);
+                await updatePassword(userCredential.user, newPassword);
                 
-                await updateDoc(doc(window.db, "cb_users", currentUser.uid), {
-                    insentifBalance: senderNewInsentif,
-                    history: [{
-                        id: Date.now(), date: dateStr, type: 'P2P Transfer (Out)', amount: -amount, status: 'Completed',
-                        description: `Kepada @${recipient}${note ? ' | ' + note : ''}`
-                    }, ...(currentUser.history || [])]
-                });
-                
-                await updateDoc(doc(window.db, "cb_users", recipientDoc.id), {
-                    balance: recipientNewBalance,
-                    history: [{
-                        id: Date.now() + 1, date: dateStr, type: 'P2P Transfer (In)', amount: amount, status: 'Completed',
-                        description: `Dari @${currentUser.username}${note ? ' | ' + note : ''}`
-                    }, ...(recipientData.history || [])]
-                });
-                
-                await addUserNotification(recipientDoc.id, '💸 Kredit P2P Diterima!', `Anda terima RM${amount.toFixed(2)} dari @${currentUser.username}${note ? ' (' + note + ')' : ''}.\n\nKredit masuk ke Wallet Utama.`, '💸');
-                
+                await updateDoc(userRef, { _passwordBackup: encodePass(newPassword), passwordChangedAt: new Date().toISOString(), passwordChangedBy: 'user_self' });
+                await signOut(window.auth);
                 playSuccessSound();
-                alert(`✅ TRANSFER BERJAYA!\n\n💸 Kepada: @${recipient}\n💰 Jumlah: RM${amount.toFixed(2)}\n📊 Baki Insentif: RM${senderNewInsentif.toFixed(2)}`);
+                alert('✅ PASSWORD DITUKAR!\n\nSila login semula.');
                 
-                document.getElementById('p2pRecipient').value = '';
-                document.getElementById('p2pAmount').value = '';
-                document.getElementById('p2pNote').value = '';
-                closeModal('modalP2P');
-            } catch (e) { console.error(e); playErrorSound(); alert('❌ Ralat: ' + e.message); }
-            finally { btn.disabled = false; btn.innerText = '💸 Transfer Sekarang'; }
+                document.getElementById('currentPasswordInput').value = '';
+                document.getElementById('newPasswordInput').value = '';
+                document.getElementById('confirmPasswordInput').value = '';
+                
+                currentUser = null;
+                showPage('auth');
+                toggleAuthForm('login');
+                document.getElementById('loginUsername').value = userData.username;
+            } catch (e) {
+                console.error(e);
+                playErrorSound();
+                if (e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential') alert('❌ Password semasa salah.');
+                else alert('❌ Ralat: ' + e.message);
+            } finally { window.isResettingPassword = false; btn.disabled = false; btn.innerText = '🔐 Tukar Password'; }
         }
 
-        // ==================== SAVE HEIR INFO ====================
+        // ==================== PASS-UP 3 LEVEL BONUS WD ====================
+        async function processWDDownlineBonus(downlineUsername, directSponsorUsername, grossAmount, wdNumber) {
+            const { collection, query, where, getDocs } = window.FB;
+            console.log("=== WD DOWNLINE BONUS (Pass-Up 3 Level) ===");
+            if (!directSponsorUsername) { console.log(`ℹ️ Tiada sponsor`); return; }
+            
+            let currentUplineUsername = directSponsorUsername;
+            let currentLevel = 1;
+            const MAX_LEVEL = 3;
+            const levelLog = [];
+            
+            while (currentUplineUsername && currentLevel <= MAX_LEVEL) {
+                const uplineQ = query(collection(window.db, "cb_users"), where("username", "==", currentUplineUsername));
+                const uplineSnap = await getDocs(uplineQ);
+                if (uplineSnap.empty) break;
+                
+                const uplineDoc = uplineSnap.docs[0];
+                const uplineData = uplineDoc.data();
+                const uplinePackage = uplineData.packageData;
+                
+                const isLayak = uplinePackage && uplinePackage.status === 'active' && uplinePackage.amount >= 1000 && uplineData.bonusActive !== false;
+                
+                if (isLayak) {
+                    const bonusType = currentLevel === 1 ? 'direct' : 'passup';
+                    await creditWDBonusV3(uplineDoc.id, uplineData, currentUplineUsername, downlineUsername, grossAmount, wdNumber, bonusType, currentLevel, levelLog);
+                    return;
+                }
+                
+                let reason = '';
+                if (!uplinePackage) reason = 'Tiada pakej';
+                else if (uplinePackage.status !== 'active') reason = 'Pakej tamat';
+                else if (uplinePackage.amount < 1000) reason = `Pakej RM${uplinePackage.amount} < RM1,000`;
+                else if (uplineData.bonusActive === false) reason = 'Bonus tamat';
+                
+                levelLog.push({ level: currentLevel, username: currentUplineUsername, reason: reason });
+                currentUplineUsername = uplineData.sponsorUsername;
+                currentLevel++;
+            }
+            console.log(`❌ Semua ${MAX_LEVEL} level tidak layak - BONUS HANGUS`);
+        }
+
+        async function creditWDBonusV3(userId, userData, username, downlineUsername, grossAmount, wdNumber, type, level, skippedSponsors) {
+            const { doc, updateDoc } = window.FB;
+            const bonusWD = grossAmount * 0.05;
+            const isPassUp = type === 'passup';
+            const typeLabel = isPassUp ? ` (Pass-Up L${level})` : '';
+            
+            let description = `Dari ${downlineUsername} (WD #${wdNumber})`;
+            if (isPassUp && skippedSponsors.length > 0) {
+                const skippedList = skippedSponsors.map(s => `@${s.username}`).join(', ');
+                description += ` | Pass-up L${level}: ${skippedList}`;
+            }
+            
+            await updateDoc(doc(window.db, "cb_users", userId), {
+                insentifBalance: (userData.insentifBalance || 0) + bonusWD,
+                history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: `Bonus WD Downline (5%)${typeLabel}`, amount: bonusWD, status: 'Bonus', description: description }, ...(userData.history || [])]
+            });
+            
+            let notifMsg = `Anda terima RM${bonusWD.toFixed(2)} dari WD ${downlineUsername}`;
+            if (isPassUp && skippedSponsors.length > 0) {
+                notifMsg += `\n\n⬆️ PASS-UP BONUS (Level ${level})`;
+                skippedSponsors.forEach(s => { notifMsg += `\n• @${s.username} (L${s.level}): ${s.reason}`; });
+            }
+            
+            await addUserNotification(userId, `💎 Bonus WD Downline${typeLabel}`, notifMsg, '💎');
+        }
+
+        // ==================== SAVE HEIR ====================
         async function saveHeirInfo() {
-            if (!currentUser) { alert('❌ Sila login.'); return; }
+            if (!currentUser) return;
             const heirName = document.getElementById('heirNameInput').value.trim();
             const heirRelation = document.getElementById('heirRelationInput').value;
             const heirPhone = document.getElementById('heirPhoneInput').value.trim();
             
-            if (!heirName) { alert('❌ Sila masukkan nama pewaris.'); return; }
-            if (!heirRelation) { alert('❌ Sila pilih hubungan.'); return; }
-            if (!heirPhone) { alert('❌ Sila masukkan no HP pewaris.'); return; }
+            if (!heirName || !heirRelation || !heirPhone) { alert('❌ Sila isi semua.'); return; }
             if (heirPhone.length < 9) { alert('❌ No HP tidak sah.'); return; }
             
             try {
@@ -863,11 +942,65 @@
                     heirInfo: { name: heirName, relation: heirRelation, phone: heirPhone, updatedAt: new Date().toISOString() }
                 });
                 playSuccessSound();
-                alert('✅ Maklumat Pewaris berjaya disimpan!');
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+                alert('✅ Maklumat Pewaris disimpan!');
+            } catch (e) { alert('❌ ' + e.message); }
         }
 
-        // ==================== ADMIN ADJUST CREDIT ====================
+        // ==================== P2P ====================
+        async function handleP2PTransfer() {
+            if (!currentUser) return;
+            const recipient = document.getElementById('p2pRecipient').value.trim().toLowerCase();
+            const amount = parseFloat(document.getElementById('p2pAmount').value);
+            const note = document.getElementById('p2pNote').value.trim();
+            
+            if (!recipient) { alert('❌ Sila masukkan username.'); return; }
+            if (recipient === currentUser.username) { alert('❌ Tidak boleh diri sendiri.'); return; }
+            if (isNaN(amount) || amount < 1) { alert('❌ Minimum RM1.'); return; }
+            if (amount > insentifBalance) { alert(`❌ Baki tak cukup.`); return; }
+            
+            if (!confirm(`📤 Sahkan:\n\n💸 @${recipient}\n💰 RM${amount.toFixed(2)}\n📝 ${note || '-'}`)) return;
+            
+            const btn = document.getElementById('p2pSubmitBtn');
+            btn.disabled = true;
+            
+            try {
+                const { doc, getDoc, updateDoc, collection, query, where, getDocs } = window.FB;
+                const recipientQ = query(collection(window.db, "cb_users"), where("username", "==", recipient));
+                const recipientSnap = await getDocs(recipientQ);
+                
+                if (recipientSnap.empty) { alert('❌ Penerima tidak dijumpai.'); playErrorSound(); return; }
+                const recipientDoc = recipientSnap.docs[0];
+                const recipientData = recipientDoc.data();
+                if (recipientData.role === 'admin') { alert('❌ Tidak boleh ke admin.'); return; }
+                
+                const senderNewInsentif = insentifBalance - amount;
+                const recipientNewBalance = (recipientData.balance || 0) + amount;
+                const dateStr = new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' });
+                
+                await updateDoc(doc(window.db, "cb_users", currentUser.uid), {
+                    insentifBalance: senderNewInsentif,
+                    history: [{ id: Date.now(), date: dateStr, type: 'P2P Transfer (Out)', amount: -amount, status: 'Completed', description: `Kepada @${recipient}${note ? ' | ' + note : ''}` }, ...(currentUser.history || [])]
+                });
+                
+                await updateDoc(doc(window.db, "cb_users", recipientDoc.id), {
+                    balance: recipientNewBalance,
+                    history: [{ id: Date.now() + 1, date: dateStr, type: 'P2P Transfer (In)', amount: amount, status: 'Completed', description: `Dari @${currentUser.username}${note ? ' | ' + note : ''}` }, ...(recipientData.history || [])]
+                });
+                
+                await addUserNotification(recipientDoc.id, '💸 P2P Diterima!', `RM${amount.toFixed(2)} dari @${currentUser.username}`, '💸');
+                
+                playSuccessSound();
+                alert(`✅ BERJAYA!\n\n💸 @${recipient}\n💰 RM${amount.toFixed(2)}`);
+                
+                document.getElementById('p2pRecipient').value = '';
+                document.getElementById('p2pAmount').value = '';
+                document.getElementById('p2pNote').value = '';
+                closeModal('modalP2P');
+            } catch (e) { console.error(e); playErrorSound(); alert('❌ ' + e.message); }
+            finally { btn.disabled = false; }
+        }
+
+        // ==================== ADMIN ADJUST ====================
         async function adminAdjustCredit() {
             if (!currentUser || currentUser.role !== 'admin') { alert('❌ Admin sahaja.'); return; }
             const username = document.getElementById('adjustUsername').value.trim().toLowerCase();
@@ -876,73 +1009,40 @@
             const amount = parseFloat(document.getElementById('adjustAmount').value);
             const reason = document.getElementById('adjustReason').value.trim();
             
-            if (!username) { alert('❌ Sila masukkan username.'); return; }
-            if (isNaN(amount) || amount <= 0) { alert('❌ Jumlah tidak sah.'); return; }
-            if (!reason) { alert('❌ Sila masukkan sebab/nota.'); return; }
+            if (!username || isNaN(amount) || amount <= 0 || !reason) { alert('❌ Isi semua field.'); return; }
             
             const actionText = action === 'add' ? 'TAMBAH' : 'TOLAK';
             const walletText = walletType === 'balance' ? 'Wallet Utama' : 'Wallet Insentif';
-            
-            if (!confirm(`⚠️ Sahkan:\n\n${actionText} RM${amount.toFixed(2)}\nKe ${walletText}\nUntuk @${username}\n\nSebab: ${reason}\n\nTeruskan?`)) return;
+            if (!confirm(`⚠️ ${actionText} RM${amount}\n${walletText} @${username}\n${reason}`)) return;
             
             const btn = document.getElementById('adjustCreditBtn');
-            btn.disabled = true; btn.innerText = 'Memproses...';
+            btn.disabled = true;
             
             try {
                 const { doc, getDoc, updateDoc, collection, query, where, getDocs, addDoc } = window.FB;
                 const userQ = query(collection(window.db, "cb_users"), where("username", "==", username));
                 const userSnap = await getDocs(userQ);
-                
                 if (userSnap.empty) { alert('❌ User tidak dijumpai.'); return; }
                 const userDoc = userSnap.docs[0];
                 const userData = userDoc.data();
-                if (userData.role === 'admin') { alert('❌ Tidak boleh adjust admin.'); return; }
                 
                 const currentAmount = userData[walletType] || 0;
-                let newAmount = currentAmount;
+                let newAmount = action === 'add' ? currentAmount + amount : currentAmount - amount;
+                if (newAmount < 0 && action === 'deduct') { alert(`❌ Baki < jumlah.`); return; }
                 
-                if (action === 'add') { newAmount = currentAmount + amount; }
-                else {
-                    if (amount > currentAmount) { alert(`❌ Jumlah tolak melebihi baki.\nBaki: RM${currentAmount.toFixed(2)}`); return; }
-                    newAmount = currentAmount - amount;
-                }
-                
-                const dateStr = new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' });
-                const historyItem = {
-                    id: Date.now(),
-                    date: dateStr,
-                    type: action === 'add' ? '💳 Admin Credit Added' : '💳 Admin Credit Deducted',
-                    amount: action === 'add' ? amount : -amount,
-                    status: 'Completed',
-                    description: `${reason} | By: ${currentUser.username}`
-                };
-                
-                await updateDoc(doc(window.db, "cb_users", userDoc.id), {
-                    [walletType]: newAmount,
-                    history: [historyItem, ...(userData.history || [])]
-                });
-                
-                const notifTitle = action === 'add' ? '💳 Kredit Ditambah Admin' : '💳 Kredit Ditolak Admin';
-                const notifMsg = action === 'add' 
-                    ? `Admin telah menambah RM${amount.toFixed(2)} ke ${walletText} anda.\n\nSebab: ${reason}`
-                    : `Admin telah menolak RM${amount.toFixed(2)} dari ${walletText} anda.\n\nSebab: ${reason}`;
-                await addUserNotification(userDoc.id, notifTitle, notifMsg, action === 'add' ? '💳' : '⚠️');
-                
-                await addDoc(collection(window.db, "cb_adjustments"), {
-                    adminUsername: currentUser.username, targetUsername: username, walletType: walletType,
-                    action: action, amount: amount, reason: reason,
-                    balanceBefore: currentAmount, balanceAfter: newAmount, createdAt: new Date().toISOString()
-                });
+                await updateDoc(doc(window.db, "cb_users", userDoc.id), { [walletType]: newAmount });
+                await addDoc(collection(window.db, "cb_adjustments"), { adminUsername: currentUser.username, targetUsername: username, walletType, action, amount, reason, balanceBefore: currentAmount, balanceAfter: newAmount, createdAt: new Date().toISOString() });
+                await addUserNotification(userDoc.id, action === 'add' ? '💳 Kredit Ditambah' : '💳 Kredit Ditolak', `Admin ${actionText} RM${amount} ke ${walletText}.\n${reason}`, action === 'add' ? '💳' : '⚠️');
                 
                 playSuccessSound();
-                alert(`✅ BERJAYA!\n\n${actionText} RM${amount.toFixed(2)}\n@${username}\n${walletText}\nBaki baru: RM${newAmount.toFixed(2)}`);
+                alert(`✅ BERJAYA! ${walletText}: RM${newAmount.toFixed(2)}`);
                 
                 document.getElementById('adjustUsername').value = '';
                 document.getElementById('adjustAmount').value = '';
                 document.getElementById('adjustReason').value = '';
                 loadAdjustmentLog();
-            } catch (e) { console.error(e); alert('❌ Ralat: ' + e.message); }
-            finally { btn.disabled = false; btn.innerText = '✅ Laksanakan Adjust'; }
+            } catch (e) { alert('❌ ' + e.message); }
+            finally { btn.disabled = false; }
         }
 
         async function loadAdjustmentLog() {
@@ -960,18 +1060,11 @@
                         const isAdd = item.action === 'add';
                         const div = document.createElement('div');
                         div.className = `text-[10px] p-2 rounded border ${isAdd ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`;
-                        div.innerHTML = `
-                            <div class="flex justify-between">
-                                <span class="font-bold ${isAdd ? 'text-green-700' : 'text-red-700'}">${isAdd ? '➕' : '➖'} RM${item.amount.toFixed(2)} - @${item.targetUsername}</span>
-                                <span class="text-gray-500">${item.walletType === 'balance' ? 'Utama' : 'Insentif'}</span>
-                            </div>
-                            <p class="text-gray-600 mt-0.5">${item.reason}</p>
-                            <p class="text-gray-400 mt-0.5">${new Date(item.createdAt).toLocaleString('ms-MY', { dateStyle: 'short', timeStyle: 'short' })}</p>
-                        `;
+                        div.innerHTML = `<div class="flex justify-between"><span class="font-bold ${isAdd ? 'text-green-700' : 'text-red-700'}">${isAdd ? '➕' : '➖'} RM${item.amount} - @${item.targetUsername}</span><span class="text-gray-500">${item.walletType}</span></div><p class="text-gray-600">${item.reason}</p>`;
                         logEl.appendChild(div);
                     });
                 });
-            } catch (e) { logEl.innerHTML = '<p class="text-[10px] text-gray-400 text-center py-2">Log tidak dapat dimuatkan.</p>'; }
+            } catch (e) {}
         }
 
         // ==================== RESET PASSWORD ====================
@@ -1001,38 +1094,37 @@
         }
         async function resetFindUser() {
             const username = document.getElementById('resetUsernameInput').value.trim().toLowerCase();
-            if (!username) { alert('Sila masukkan username.'); return; }
-            const btn = document.getElementById('resetFindBtn'); btn.disabled = true; btn.innerText = '🔍 Mencari...';
+            if (!username) { alert('Masukkan username.'); return; }
+            const btn = document.getElementById('resetFindBtn'); btn.disabled = true;
             try {
                 const { collection, query, where, getDocs } = window.FB;
                 const q = query(collection(window.db, "cb_users"), where("username", "==", username));
                 const snap = await getDocs(q);
-                if (snap.empty) { alert('❌ Username tidak dijumpai.'); playErrorSound(); return; }
+                if (snap.empty) { alert('❌ Tidak dijumpai.'); playErrorSound(); return; }
                 const userDoc = snap.docs[0];
                 const userData = userDoc.data();
-                if (!userData.securityQuestion || !userData.securityAnswer) { alert('⚠️ Akaun ini tiada soalan keselamatan.\n\nHubungi admin.'); playErrorSound(); return; }
+                if (!userData.securityQuestion) { alert('⚠️ Tiada soalan. Hubungi admin.'); return; }
                 resetUserDocId = userDoc.id; resetUsername = username; resetAttempts = 0;
-                document.getElementById('resetQuestionText').innerText = QUESTION_TEXT[userData.securityQuestion] || 'Soalan keselamatan';
+                document.getElementById('resetQuestionText').innerText = QUESTION_TEXT[userData.securityQuestion] || 'Soalan';
                 document.getElementById('resetAnswerInput').value = '';
                 document.getElementById('resetAttemptsLeft').innerText = MAX_ATTEMPTS;
                 document.getElementById('resetStep1').classList.add('hidden');
                 document.getElementById('resetStep2').classList.remove('hidden');
                 document.getElementById('stepDot1').className = 'step-indicator bg-green-500 text-white';
                 document.getElementById('stepDot2').className = 'step-indicator bg-blue-500 text-white';
-                setTimeout(() => document.getElementById('resetAnswerInput').focus(), 200);
                 playSuccessSound();
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
-            finally { btn.disabled = false; btn.innerText = '🔍 Cari Akaun'; }
+            } catch (e) { alert('❌ ' + e.message); }
+            finally { btn.disabled = false; }
         }
         async function resetVerifyAnswer() {
-            if (!resetUserDocId) { alert('Sila cari akaun dahulu.'); return; }
+            if (!resetUserDocId) return;
             const answer = document.getElementById('resetAnswerInput').value.trim().toLowerCase();
-            if (!answer) { alert('Sila masukkan jawapan.'); return; }
-            const btn = document.getElementById('resetVerifyBtn'); btn.disabled = true; btn.innerText = '✅ Mengesahkan...';
+            if (!answer) { alert('Masukkan jawapan.'); return; }
+            const btn = document.getElementById('resetVerifyBtn'); btn.disabled = true;
             try {
                 const { doc, getDoc } = window.FB;
                 const userDoc = await getDoc(doc(window.db, "cb_users", resetUserDocId));
-                if (!userDoc.exists()) { alert('❌ Akaun tidak dijumpai.'); return; }
+                if (!userDoc.exists()) return;
                 const userData = userDoc.data();
                 if (answer === decodeAnswer(userData.securityAnswer)) {
                     document.getElementById('resetNewPassword').value = '';
@@ -1041,71 +1133,65 @@
                     document.getElementById('resetStep3').classList.remove('hidden');
                     document.getElementById('stepDot2').className = 'step-indicator bg-green-500 text-white';
                     document.getElementById('stepDot3').className = 'step-indicator bg-blue-500 text-white';
-                    setTimeout(() => document.getElementById('resetNewPassword').focus(), 200);
                     playSuccessSound();
                 } else {
                     resetAttempts++;
                     const left = MAX_ATTEMPTS - resetAttempts;
-                    if (left <= 0) { alert('❌ Jawapan salah 3 kali.\n\nHubungi admin.'); closeModal('modalReset'); playErrorSound(); return; }
+                    if (left <= 0) { alert('❌ Salah 3 kali.'); closeModal('modalReset'); playErrorSound(); return; }
                     document.getElementById('resetAttemptsLeft').innerText = left;
-                    alert(`❌ Jawapan salah. Baki: ${left}`);
+                    alert(`❌ Salah. Baki: ${left}`);
                     document.getElementById('resetAnswerInput').value = '';
-                    playErrorSound();
                 }
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
-            finally { btn.disabled = false; btn.innerText = '✅ Sahkan Jawapan'; }
+            } catch (e) { alert('❌ ' + e.message); }
+            finally { btn.disabled = false; }
         }
         async function resetSavePassword() {
             const newPass = document.getElementById('resetNewPassword').value;
             const confirmPass = document.getElementById('resetConfirmPassword').value;
-            if (!newPass || !confirmPass) { alert('Sila isi kedua-dua password.'); return; }
-            if (newPass.length < 6) { alert('Password min 6 aksara.'); return; }
-            if (newPass !== confirmPass) { alert('❌ Password tidak sepadan.'); return; }
-            const btn = document.getElementById('resetSaveBtn'); btn.disabled = true; btn.innerText = '💾 Menyimpan...';
+            if (!newPass || newPass.length < 6) { alert('Password min 6.'); return; }
+            if (newPass !== confirmPass) { alert('❌ Tidak sepadan.'); return; }
+            const btn = document.getElementById('resetSaveBtn'); btn.disabled = true;
             window.isResettingPassword = true;
             try {
                 const { doc, getDoc, updateDoc, signInWithEmailAndPassword, signOut, updatePassword } = window.FB;
                 const userDocRef = doc(window.db, "cb_users", resetUserDocId);
                 const userSnap = await getDoc(userDocRef);
-                if (!userSnap.exists()) { alert('❌ Akaun tidak dijumpai.'); return; }
+                if (!userSnap.exists()) return;
                 const userData = userSnap.data();
                 const oldPassword = decodePass(userData._passwordBackup);
                 const email = resetUsername + "@cbprofit.app";
                 const userCredential = await signInWithEmailAndPassword(window.auth, email, oldPassword);
                 await updatePassword(userCredential.user, newPass);
-                await updateDoc(userDocRef, { _passwordBackup: encodePass(newPass), passwordChangedAt: new Date().toISOString(), passwordResetMethod: 'security_question' });
+                await updateDoc(userDocRef, { _passwordBackup: encodePass(newPass), passwordChangedAt: new Date().toISOString() });
                 await signOut(window.auth);
                 playSuccessSound();
-                alert('✅ PASSWORD BERJAYA DITUKAR!\n\nSila login semula.');
+                alert('✅ Password ditukar!');
                 closeModal('modalReset');
                 document.getElementById('loginUsername').value = resetUsername;
-                document.getElementById('loginPassword').value = '';
-                resetUserDocId = null; resetUsername = null; resetAttempts = 0;
-            } catch (e) { playErrorSound(); alert('❌ Ralat: ' + e.message); }
-            finally { window.isResettingPassword = false; btn.disabled = false; btn.innerText = '💾 Simpan Password Baru'; }
+            } catch (e) { alert('❌ ' + e.message); }
+            finally { window.isResettingPassword = false; btn.disabled = false; }
         }
         async function adminResetUserPassword(uid, username) {
-            if (!confirm(`🔑 Reset password untuk @${username}?`)) return;
-            const newPass = prompt(`Password sementara untuk @${username} (min 6 aksara):`);
-            if (!newPass) return;
-            if (newPass.length < 6) { alert('❌ Minimum 6 aksara.'); return; }
+            if (!confirm(`🔑 Reset @${username}?`)) return;
+            const newPass = prompt(`Password baru untuk @${username}:`);
+            if (!newPass || newPass.length < 6) { alert('❌ Min 6.'); return; }
             window.isResettingPassword = true;
             try {
                 const { doc, getDoc, updateDoc, signInWithEmailAndPassword, signOut, updatePassword } = window.FB;
                 const userSnap = await getDoc(doc(window.db, "cb_users", uid));
-                if (!userSnap.exists()) { alert('User not found.'); return; }
+                if (!userSnap.exists()) return;
                 const userData = userSnap.data();
                 const oldPassword = decodePass(userData._passwordBackup);
                 const email = userData.username + "@cbprofit.app";
                 const userCredential = await signInWithEmailAndPassword(window.auth, email, oldPassword);
                 await updatePassword(userCredential.user, newPass);
-                await updateDoc(doc(window.db, "cb_users", uid), { _passwordBackup: encodePass(newPass), passwordChangedAt: new Date().toISOString(), passwordResetMethod: 'admin_reset', passwordResetBy: currentUser.username });
+                await updateDoc(doc(window.db, "cb_users", uid), { _passwordBackup: encodePass(newPass), passwordChangedAt: new Date().toISOString(), passwordResetBy: currentUser.username });
                 await signOut(window.auth);
-                await addUserNotification(uid, '🔑 Password Direset Admin', `Password anda telah direset. Sila login dan tukar segera.`, '🔑');
+                await addUserNotification(uid, '🔑 Password Reset', `Direset admin.`, '🔑');
                 playSuccessSound();
-                alert(`✅ Password @${userData.username} direset!\n\n🔐 Password: ${newPass}\n\nBeri kepada user.`);
+                alert(`✅ Password @${userData.username}: ${newPass}`);
                 showPage('auth'); toggleAuthForm('login');
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+            } catch (e) { alert('❌ ' + e.message); }
             finally { window.isResettingPassword = false; }
         }
 
@@ -1127,23 +1213,23 @@
                 logoClickCount++;
                 if (logoClickTimer) clearTimeout(logoClickTimer);
                 logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
-                if (logoClickCount >= 5) showClickToast(`🔓 ${logoClickCount} / 10 klik...`);
-                if (logoClickCount >= 10) { logoClickCount = 0; if (logoClickTimer) clearTimeout(logoClickTimer); showAdminForm(); }
+                if (logoClickCount >= 5) showClickToast(`🔓 ${logoClickCount}/10`);
+                if (logoClickCount >= 10) { logoClickCount = 0; clearTimeout(logoClickTimer); showAdminForm(); }
             });
         }
         function showClickToast(message) { const toast = document.getElementById('clickToast'); toast.innerText = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 800); }
-        function showAdminForm() { adminFormVisible = true; document.getElementById('login-form').classList.add('hidden'); document.getElementById('register-form').classList.add('hidden'); document.getElementById('admin-login-form').classList.remove('hidden'); showClickToast('🔐 Admin Unlocked!'); setTimeout(() => document.getElementById('adminUsername')?.focus(), 200); }
+        function showAdminForm() { adminFormVisible = true; document.getElementById('login-form').classList.add('hidden'); document.getElementById('register-form').classList.add('hidden'); document.getElementById('admin-login-form').classList.remove('hidden'); showClickToast('🔐 Admin Unlocked!'); }
         function hideAdminForm() { adminFormVisible = false; document.getElementById('admin-login-form').classList.add('hidden'); document.getElementById('login-form').classList.remove('hidden'); document.getElementById('adminUsername').value = ''; document.getElementById('adminPassword').value = ''; logoClickCount = 0; }
         async function handleAdminLogin() {
             const username = document.getElementById('adminUsername').value.trim().toLowerCase();
             const password = document.getElementById('adminPassword').value.trim();
-            if (!username || !password) { alert('Sila masukkan Username dan Password.'); return; }
-            const btn = document.getElementById('adminLoginBtn'); btn.disabled = true; btn.innerText = 'Mengesahkan...';
+            if (!username || !password) { alert('Isi username & password.'); return; }
+            const btn = document.getElementById('adminLoginBtn'); btn.disabled = true;
             try {
                 const { signInWithEmailAndPassword, doc, getDoc } = window.FB;
                 const userCredential = await signInWithEmailAndPassword(window.auth, username + "@cbprofit.app", password);
                 const userDoc = await getDoc(doc(window.db, "cb_users", userCredential.user.uid));
-                if (userDoc.exists() && userDoc.data().role === 'admin') { hideAdminForm(); showClickToast('✅ Admin Login!'); playSuccessSound(); } 
+                if (userDoc.exists() && userDoc.data().role === 'admin') { hideAdminForm(); showClickToast('✅ Admin!'); playSuccessSound(); }
                 else { await window.FB.signOut(window.auth); alert('❌ Bukan admin!'); hideAdminForm(); }
             } catch (error) { alert('❌ Ralat: ' + error.message); }
             finally { btn.disabled = false; btn.innerText = '🔐 LOGIN ADMIN'; }
@@ -1167,8 +1253,8 @@
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const refParam = urlParams.get('ref');
-                if (refParam) { const refUsername = refParam.toLowerCase().trim(); if (/^[a-z0-9_]{4,}$/.test(refUsername)) { pendingReferral = refUsername; sessionStorage.setItem('pendingReferral', refUsername); applyReferralBanner(refUsername); } } 
-                else { const stored = sessionStorage.getItem('pendingReferral'); if (stored) { pendingReferral = stored; applyReferralBanner(stored); } }
+                if (refParam) { const refUsername = refParam.toLowerCase().trim(); if (/^[a-z0-9_]{4,}$/.test(refUsername)) { pendingReferral = refUsername; SafeStorage.set('pendingReferral', refUsername); applyReferralBanner(refUsername); } } 
+                else { const stored = SafeStorage.get('pendingReferral'); if (stored) { pendingReferral = stored; applyReferralBanner(stored); } }
             } catch (e) {}
         }
         function applyReferralBanner(username) {
@@ -1177,15 +1263,15 @@
             const sponsorInput = document.getElementById('regSponsor');
             const autoNote = document.getElementById('sponsorAutoNote');
             if (banner && nameEl) { nameEl.innerText = '@' + username; banner.classList.remove('hidden'); }
-            if (sponsorInput && !sponsorInput.value) { sponsorInput.value = username; sponsorInput.readOnly = true; sponsorInput.classList.add('bg-purple-50', 'border-purple-300', 'cursor-not-allowed'); }
+            if (sponsorInput && !sponsorInput.value) { sponsorInput.value = username; sponsorInput.readOnly = true; sponsorInput.classList.add('bg-purple-50', 'border-purple-300'); }
             if (autoNote) autoNote.classList.remove('hidden');
-            setTimeout(() => { const loginForm = document.getElementById('login-form'); if (loginForm && !loginForm.classList.contains('hidden')) toggleAuthForm('register'); }, 300);
+            setTimeout(() => { const lf = document.getElementById('login-form'); if (lf && !lf.classList.contains('hidden')) toggleAuthForm('register'); }, 300);
         }
         function clearReferral() {
-            pendingReferral = null; sessionStorage.removeItem('pendingReferral');
+            pendingReferral = null; SafeStorage.remove('pendingReferral');
             const banner = document.getElementById('inviterBanner'); const sponsorInput = document.getElementById('regSponsor'); const autoNote = document.getElementById('sponsorAutoNote');
             if (banner) banner.classList.add('hidden');
-            if (sponsorInput) { sponsorInput.value = ''; sponsorInput.readOnly = false; sponsorInput.classList.remove('bg-purple-50', 'border-purple-300', 'cursor-not-allowed'); }
+            if (sponsorInput) { sponsorInput.value = ''; sponsorInput.readOnly = false; sponsorInput.classList.remove('bg-purple-50', 'border-purple-300'); }
             if (autoNote) autoNote.classList.add('hidden');
         }
 
@@ -1199,16 +1285,14 @@
             let sponsorUsername = document.getElementById('regSponsor').value.trim().toLowerCase();
             if (!sponsorUsername && pendingReferral) sponsorUsername = pendingReferral;
 
-            if (!fullName || !phone || !username || !password) { alert('Sila isi semua maklumat wajib.'); return; }
-            if (username.length < 4) { alert('Username min 4 aksara.'); return; }
-            if (!/^[a-z0-9_]+$/.test(username)) { alert('Username hanya huruf kecil, nombor, underscore.'); return; }
-            if (password.length < 6) { alert('Password min 6 aksara.'); return; }
-            if (!securityQuestion) { alert('Sila pilih soalan keselamatan.'); return; }
-            if (!securityAnswer || securityAnswer.length < 2) { alert('Jawapan min 2 aksara.'); return; }
+            if (!fullName || !phone || !username || !password) { alert('Isi semua maklumat.'); return; }
+            if (username.length < 4) { alert('Username min 4.'); return; }
+            if (!/^[a-z0-9_]+$/.test(username)) { alert('Username: huruf kecil, nombor, _ sahaja.'); return; }
+            if (password.length < 6) { alert('Password min 6.'); return; }
+            if (!securityQuestion || !securityAnswer) { alert('Isi soalan keselamatan.'); return; }
             if (sponsorUsername === username) { alert('❌ Tidak boleh sponsor diri sendiri.'); return; }
 
             const btn = document.getElementById('registerBtn'); btn.disabled = true; btn.innerText = 'Mendaftar...';
-
             try {
                 const { createUserWithEmailAndPassword, doc, setDoc, collection, query, where, getDocs, updateDoc, arrayUnion } = window.FB;
                 const email = toEmail(username);
@@ -1233,43 +1317,39 @@
                     if (!sponsorSnap.empty) {
                         const sponsorDoc = sponsorSnap.docs[0];
                         const sponsorData = sponsorDoc.data();
-                        const existingDownlines = sponsorData.downlines || [];
-                        if (!existingDownlines.includes(username)) { await updateDoc(doc(window.db, "cb_users", sponsorDoc.id), { downlines: arrayUnion(username) }); }
-                        await addUserNotification(sponsorDoc.id, '🎉 Downline Baru Daftar!', `${fullName} (@${username}) telah mendaftar melalui link anda.`, '🎉');
+                        const existing = sponsorData.downlines || [];
+                        if (!existing.includes(username)) await updateDoc(doc(window.db, "cb_users", sponsorDoc.id), { downlines: arrayUnion(username) });
+                        await addUserNotification(sponsorDoc.id, '🎉 Downline Baru!', `${fullName} (@${username}) mendaftar.`, '🎉');
                     }
                 }
 
                 playSuccessSound();
-                alert('✅ Pendaftaran berjaya!\n\nUsername: ' + username + (sponsorUsername ? '\nPenaja: ' + sponsorUsername : ''));
+                alert('✅ Berjaya! Sila login.');
                 clearReferral();
                 await window.FB.signOut(window.auth);
                 toggleAuthForm('login');
                 document.getElementById('loginUsername').value = username;
-                document.getElementById('regFullName').value = ''; document.getElementById('regPhone').value = '';
-                document.getElementById('regUsername').value = ''; document.getElementById('regPassword').value = '';
-                document.getElementById('regSponsor').value = ''; document.getElementById('regSecurityQuestion').value = '';
-                document.getElementById('regSecurityAnswer').value = '';
+                ['regFullName','regPhone','regUsername','regPassword','regSponsor','regSecurityAnswer'].forEach(id => document.getElementById(id).value = '');
+                document.getElementById('regSecurityQuestion').value = '';
             } catch (error) {
                 playErrorSound();
                 if (error.code === 'auth/email-already-in-use') alert('❌ Username sudah digunakan.');
-                else if (error.code === 'auth/weak-password') alert('❌ Password terlalu lemah.');
-                else alert('❌ Ralat: ' + error.message);
+                else alert('❌ ' + error.message);
             } finally { btn.disabled = false; btn.innerText = 'DAFTAR SEKARANG'; }
         }
 
         async function handleLogin() {
             const username = document.getElementById('loginUsername').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value.trim();
-            if (!username || !password) { alert('Sila masukkan Username dan Password.'); return; }
-            const btn = document.getElementById('loginBtn'); btn.disabled = true; btn.innerText = 'Log masuk...';
+            if (!username || !password) { alert('Isi username & password.'); return; }
+            const btn = document.getElementById('loginBtn'); btn.disabled = true;
             try {
                 const { signInWithEmailAndPassword } = window.FB;
                 await signInWithEmailAndPassword(window.auth, toEmail(username), password);
                 playSuccessSound();
             } catch (error) {
                 playErrorSound();
-                if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') alert('❌ Username atau Password salah!');
-                else alert('❌ Ralat: ' + error.message);
+                alert('❌ Username/Password salah.');
             } finally { btn.disabled = false; btn.innerText = 'LOGIN'; }
         }
 
@@ -1335,8 +1415,8 @@
             const linkEl = document.getElementById('referralLink'); if (linkEl) linkEl.value = refLink;
             const previewEl = document.getElementById('referralLinkPreview'); if (previewEl) previewEl.innerText = refLink;
         }
-        function copyReferralCode() { if (!currentUser) return; const code = currentUser.username.toUpperCase() + '123'; navigator.clipboard.writeText(code).then(() => showClickToast('✅ Kod dicopy!')).catch(() => {}); }
-        function copyReferralLink() { if (!currentUser) return; const baseUrl = window.location.origin + window.location.pathname; const refLink = baseUrl + '?ref=' + currentUser.username; navigator.clipboard.writeText(refLink).then(() => showClickToast('✅ Link dicopy!')).catch(() => {}); }
+        function copyReferralCode() { if (!currentUser) return; const code = currentUser.username.toUpperCase() + '123'; navigator.clipboard.writeText(code).then(() => showClickToast('✅ Dicopy!')).catch(() => {}); }
+        function copyReferralLink() { if (!currentUser) return; const baseUrl = window.location.origin + window.location.pathname; const refLink = baseUrl + '?ref=' + currentUser.username; navigator.clipboard.writeText(refLink).then(() => showClickToast('✅ Dicopy!')).catch(() => {}); }
 
         async function loadServiceCharge() {
             const { doc, getDoc } = window.FB;
@@ -1351,15 +1431,15 @@
         }
         async function saveServiceCharge() {
             const charge = parseFloat(document.getElementById('serviceChargePercent').value);
-            if (isNaN(charge) || charge < 0 || charge > 50) { alert('❌ Caj servis sah: 0% - 50%'); return; }
+            if (isNaN(charge) || charge < 0 || charge > 50) { alert('❌ 0% - 50%.'); return; }
             try {
                 const { doc, setDoc } = window.FB;
                 await setDoc(doc(window.db, "cb_settings", "payment"), { serviceChargePercent: charge }, { merge: true });
                 document.getElementById('adminExampleNet').innerText = (100 - charge).toFixed(2);
                 document.getElementById('adminExampleCharge').innerText = charge.toFixed(2);
                 playSuccessSound();
-                alert(`✅ Caj servis: ${charge}%!`);
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+                alert(`✅ Caj: ${charge}%`);
+            } catch (e) { alert('❌ ' + e.message); }
         }
 
         function loadUserNotifications() {
@@ -1371,13 +1451,13 @@
                 currentBroadcasts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
                 renderUserNotifications();
                 if (snapshot.docChanges().some(c => c.type === 'added' && !c.doc.metadata.hasPendingWrites)) {
-                    const lastNotif = sessionStorage.getItem('lastNotifCount') || '0';
+                    const lastNotif = SafeStorage.get('lastNotifCount') || '0';
                     if (currentBroadcasts.length > parseInt(lastNotif)) {
                         playNotificationSound();
                         document.getElementById('bellBtn').classList.add('bell-shake');
                         setTimeout(() => document.getElementById('bellBtn').classList.remove('bell-shake'), 1000);
                     }
-                    sessionStorage.setItem('lastNotifCount', currentBroadcasts.length.toString());
+                    SafeStorage.set('lastNotifCount', currentBroadcasts.length.toString());
                 }
             });
         }
@@ -1388,7 +1468,7 @@
             if (!currentUser) return;
             const readNotifs = currentUser.readNotifications || [];
             const allNotifs = [];
-            currentBroadcasts.forEach(b => { allNotifs.push({ id: 'broadcast_' + b.id, type: 'broadcast', title: b.title || 'Pengumuman Admin', message: b.message, createdAt: b.createdAt, read: readNotifs.includes('broadcast_' + b.id), icon: '📢' }); });
+            currentBroadcasts.forEach(b => { allNotifs.push({ id: 'broadcast_' + b.id, type: 'broadcast', title: b.title || 'Pengumuman', message: b.message, createdAt: b.createdAt, read: readNotifs.includes('broadcast_' + b.id), icon: '📢' }); });
             const now = Date.now();
             const personalNotifs = (currentUser.notifications || []).filter(n => { if (n.expiresAt) return new Date(n.expiresAt).getTime() > now; return true; });
             if (personalNotifs.length !== (currentUser.notifications || []).length) { const { doc, updateDoc } = window.FB; updateDoc(doc(window.db, "cb_users", currentUser.uid), { notifications: personalNotifs }).catch(e => {}); }
@@ -1403,8 +1483,7 @@
                 div.className = `p-2 rounded-lg border-l-4 ${n.read ? 'bg-white border-gray-300' : 'bg-blue-50 border-blue-500'} cursor-pointer hover:bg-gray-50`;
                 div.onclick = () => markNotifRead(n);
                 const timeAgo = getTimeAgo(n.createdAt);
-                const isBroadcast = n.type === 'broadcast';
-                div.innerHTML = `<div class="flex justify-between items-start gap-2"><div class="flex-1"><p class="text-xs font-bold text-gray-800">${n.icon} ${n.title}</p><p class="text-[11px] text-gray-600 mt-0.5">${n.message}</p><p class="text-[9px] text-gray-400 mt-1">${timeAgo} ${isBroadcast ? '• 📢' : ''}</p></div>${!n.read ? '<span class="w-2 h-2 bg-blue-500 rounded-full mt-1 flex-shrink-0"></span>' : ''}</div>`;
+                div.innerHTML = `<div class="flex justify-between items-start gap-2"><div class="flex-1"><p class="text-xs font-bold text-gray-800">${n.icon} ${n.title}</p><p class="text-[11px] text-gray-600 mt-0.5">${n.message}</p><p class="text-[9px] text-gray-400 mt-1">${timeAgo}</p></div>${!n.read ? '<span class="w-2 h-2 bg-blue-500 rounded-full mt-1 flex-shrink-0"></span>' : ''}</div>`;
                 list.appendChild(div);
             });
         }
@@ -1423,7 +1502,7 @@
             const allBroadcastIds = currentBroadcasts.map(b => 'broadcast_' + b.id);
             const allPersonalNotifs = (currentUser.notifications || []).map(n => ({ ...n, read: true }));
             await updateDoc(doc(window.db, "cb_users", currentUser.uid), { readNotifications: allBroadcastIds, notifications: allPersonalNotifs });
-            showClickToast('✅ Semua ditanda dibaca');
+            showClickToast('✅ Ditanda dibaca');
         }
         async function addUserNotification(userId, title, message, icon = '🔔', hoursValid = 24) {
             const { doc, updateDoc, getDoc } = window.FB;
@@ -1446,12 +1525,12 @@
                 const items = [];
                 snapshot.forEach(d => items.push({ id: d.id, ...d.data() }));
                 items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                if (items.length === 0) { list.innerHTML = '<p class="text-xs text-gray-400 text-center py-2">Tiada pengumuman.</p>'; return; }
+                if (items.length === 0) { list.innerHTML = '<p class="text-xs text-gray-400 text-center py-2">Tiada.</p>'; return; }
                 list.innerHTML = '';
                 items.forEach(b => {
                     const div = document.createElement('div');
                     div.className = "bg-white p-2 rounded-lg border text-xs flex justify-between items-start gap-2";
-                    div.innerHTML = `<div class="flex-1"><p class="font-bold text-purple-700">${b.title}</p><p class="text-gray-600 mt-0.5">${b.message}</p><p class="text-[9px] text-gray-400 mt-1">${new Date(b.createdAt).toLocaleString('ms-MY')}</p></div><button onclick="deleteBroadcast('${b.id}')" class="bg-red-500 text-white px-2 py-1 rounded text-[10px] font-bold">🗑️</button>`;
+                    div.innerHTML = `<div class="flex-1"><p class="font-bold text-purple-700">${b.title}</p><p class="text-gray-600">${b.message}</p></div><button onclick="deleteBroadcast('${b.id}')" class="bg-red-500 text-white px-2 py-1 rounded text-[10px] font-bold">🗑️</button>`;
                     list.appendChild(div);
                 });
             });
@@ -1459,19 +1538,19 @@
         async function sendBroadcast() {
             const title = document.getElementById('broadcastTitle').value.trim();
             const message = document.getElementById('broadcastMessage').value.trim();
-            if (!title || !message) { alert('Sila isi Tajuk & Mesej.'); return; }
+            if (!title || !message) { alert('Isi tajuk & mesej.'); return; }
             try {
                 const { addDoc, collection } = window.FB;
                 await addDoc(collection(window.db, "cb_broadcasts"), { title, message, createdAt: new Date().toISOString(), createdBy: currentUser.username });
                 playSuccessSound();
                 document.getElementById('broadcastTitle').value = '';
                 document.getElementById('broadcastMessage').value = '';
-                alert('✅ Pengumuman dihantar!');
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+                alert('✅ Dihantar!');
+            } catch (e) { alert('❌ ' + e.message); }
         }
         async function deleteBroadcast(id) {
-            if (!confirm('Padam pengumuman ini?')) return;
-            try { const { doc, deleteDoc } = window.FB; await deleteDoc(doc(window.db, "cb_broadcasts", id)); showClickToast('✅ Dipadam'); } catch (e) { alert('❌ Ralat: ' + e.message); }
+            if (!confirm('Padam?')) return;
+            try { const { doc, deleteDoc } = window.FB; await deleteDoc(doc(window.db, "cb_broadcasts", id)); showClickToast('✅ Dipadam'); } catch (e) { alert('❌ ' + e.message); }
         }
 
         async function loadAdminPaymentSettings() {
@@ -1497,17 +1576,19 @@
             if (adminSettings.qrBase64 && qrImg) { qrImg.src = adminSettings.qrBase64; if (qrImgBox) qrImgBox.classList.remove('hidden'); if (qrPlaceholderBox) qrPlaceholderBox.classList.add('hidden'); } 
             else { if (qrImgBox) qrImgBox.classList.add('hidden'); if (qrPlaceholderBox) qrPlaceholderBox.classList.remove('hidden'); }
         }
-        function copyAdminAccountNo() { const accountNo = adminSettings.accountNo; if (!accountNo) { alert('No akaun belum diset.'); return; } navigator.clipboard.writeText(accountNo).then(() => showClickToast('✅ Dicopy!')).catch(() => {}); }
+        function copyAdminAccountNo() { const accountNo = adminSettings.accountNo; if (!accountNo) { alert('Belum diset.'); return; } navigator.clipboard.writeText(accountNo).then(() => showClickToast('✅ Dicopy!')).catch(() => {}); }
 
         function updateBonusBanner() {
             const banner = document.getElementById('bonusStatusBanner');
             const isActive = currentUser.bonusActive !== false;
             const hasPackage = packageData && packageData.status === 'active';
-            const pkgMin = packageData && packageData.amount >= 300;
+            const pkgMin1k = packageData && packageData.amount >= 1000;
+            const pkgAny = packageData && packageData.amount >= 100;
+            
             if (!isActive) { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-red-100 text-red-700 border border-red-300"; banner.innerHTML = "🚫 BONUS TAMAT! Aktifkan pakej baru."; banner.classList.remove('hidden'); } 
-            else if (!hasPackage) { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-yellow-100 text-yellow-700 border border-yellow-300"; banner.innerHTML = "⚠️ Belum aktif pakej."; banner.classList.remove('hidden'); } 
-            else if (!pkgMin) { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-orange-100 text-orange-700 border border-orange-300"; banner.innerHTML = "⚠️ Pakej < RM300."; banner.classList.remove('hidden'); } 
-            else { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-green-100 text-green-700 border border-green-300"; banner.innerHTML = "✅ Semua bonus aktif!"; banner.classList.remove('hidden'); }
+            else if (!hasPackage) { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-blue-100 text-blue-700 border border-blue-300"; banner.innerHTML = "🆓 <b>FREE:</b> Boleh WD bonus sponsor! Untuk Bonus Rep, perlu pakej RM100+."; banner.classList.remove('hidden'); } 
+            else if (!pkgMin1k && pkgAny) { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-yellow-100 text-yellow-700 border border-yellow-300"; banner.innerHTML = "✅ Pakej RM" + packageData.amount + " - Boleh Bonus Sponsor & Rep. Untuk Bonus WD Downline, perlu RM1,000+."; banner.classList.remove('hidden'); } 
+            else { banner.className = "mb-3 p-2 rounded-lg text-xs text-center font-bold bg-green-100 text-green-700 border border-green-300"; banner.innerHTML = "✅ Semua bonus aktif! (Sponsor, Rep, WD Downline)"; banner.classList.remove('hidden'); }
         }
         function updateBankStatusUI(bankName, accountNo) {
             const el1 = document.getElementById('wdProfitBankStatus');
@@ -1538,9 +1619,8 @@
                 liveCard.classList.remove('hidden');
                 const daysPassed = Math.floor((new Date() - new Date(packageData.startDate)) / (1000 * 60 * 60 * 24));
                 const daysLeft = 21 - (daysPassed - (packageData.wdCount * 21));
-                let statusText = daysLeft > 0 ? `Menunggu WD ke-${packageData.wdCount + 1} (${daysLeft} hari)` : `✅ Sedia WD ke-${packageData.wdCount + 1}`;
                 statusDiv.className = "bg-blue-50 p-3 rounded-lg border border-blue-200 text-xs";
-                statusDiv.innerHTML = `<p class="font-bold text-blue-800 mb-1">Pakej Aktif: RM${packageData.amount.toFixed(2)}</p><p class="text-gray-600">${statusText}</p><p class="text-gray-600">WD: ${packageData.wdCount}/3 | Terkumpul: RM${packageData.totalWithdrawn.toFixed(2)}/RM${packageData.maxReturn.toFixed(2)}</p>`;
+                statusDiv.innerHTML = `<p class="font-bold text-blue-800 mb-1">Pakej: RM${packageData.amount.toFixed(2)}</p><p class="text-gray-600">WD: ${packageData.wdCount}/3 | Terkumpul: RM${packageData.totalWithdrawn.toFixed(2)}/RM${packageData.maxReturn.toFixed(2)}</p>`;
                 progressDiv.classList.remove('hidden');
                 const percent = (packageData.totalWithdrawn / packageData.maxReturn) * 100;
                 document.getElementById('progressBar').style.width = percent + '%';
@@ -1549,14 +1629,14 @@
             } else if (packageData && packageData.status === 'completed') {
                 liveCard.classList.add('hidden');
                 statusDiv.className = "bg-red-50 p-3 rounded-lg border border-red-300 text-xs";
-                statusDiv.innerHTML = `<p class="font-bold text-red-800 mb-1">✅ Pakej Selesai (180%)</p><p class="text-gray-600">Total: RM${packageData.totalWithdrawn.toFixed(2)}</p><p class="text-orange-600 font-bold mt-1">⚠️ Renew min RM${currentUser.lastPackageAmount}</p>`;
+                statusDiv.innerHTML = `<p class="font-bold text-red-800">✅ Selesai (180%)</p><p class="text-orange-600 font-bold mt-1">⚠️ Renew min RM${currentUser.lastPackageAmount}</p>`;
                 progressDiv.classList.remove('hidden');
                 document.getElementById('progressBar').style.width = '100%';
                 document.getElementById('progressPercent').innerText = '100%';
             } else {
                 liveCard.classList.add('hidden');
                 statusDiv.className = "bg-gray-50 p-3 rounded-lg text-center text-gray-500 text-xs border";
-                statusDiv.innerText = "Tiada pakej aktif. Aktifkan pakej untuk mula profit harian!";
+                statusDiv.innerText = "Tiada pakej aktif.";
                 progressDiv.classList.add('hidden');
             }
         }
@@ -1571,22 +1651,22 @@
             document.getElementById('akaunFullNameInfo').innerText = currentUser.fullName || '-';
             document.getElementById('akaunPhoneInfo').innerText = currentUser.phone || '-';
             document.getElementById('akaunSponsorInfo').innerText = currentUser.sponsorUsername || 'Tiada';
-            let pkgStatus = 'Tiada Pakej';
+            let pkgStatus = 'Tiada';
             if(currentUser.packageData) { if(currentUser.packageData.status === 'active') pkgStatus = `Aktif - RM${currentUser.packageData.amount}`; else if(currentUser.packageData.status === 'completed') pkgStatus = 'Selesai'; }
             document.getElementById('akaunPackageStatus').innerText = pkgStatus;
             const bd = currentUser.bankDetails || {};
             document.getElementById('akaunBankInfo').innerText = bd.bankName || 'Belum set';
             document.getElementById('akaunAccountNoInfo').innerText = bd.accountNo || 'Belum set';
             const bonusStatusDiv = document.getElementById('akaunBonusStatus');
-            if (currentUser.bonusActive !== false) { bonusStatusDiv.className = "p-3 rounded-lg text-xs border bg-green-50 border-green-200 text-green-700"; bonusStatusDiv.innerHTML = "✅ Sistem Bonus: <b>AKTIF</b>"; } 
-            else { bonusStatusDiv.className = "p-3 rounded-lg text-xs border bg-red-50 border-red-200 text-red-700"; bonusStatusDiv.innerHTML = "🚫 Sistem Bonus: <b>TAMAT</b>"; }
+            if (currentUser.bonusActive !== false) { bonusStatusDiv.className = "p-3 rounded-lg text-xs border bg-green-50 border-green-200 text-green-700"; bonusStatusDiv.innerHTML = "✅ Bonus AKTIF"; } 
+            else { bonusStatusDiv.className = "p-3 rounded-lg text-xs border bg-red-50 border-red-200 text-red-700"; bonusStatusDiv.innerHTML = "🚫 Bonus TAMAT"; }
             document.getElementById('akaunReferralCode').value = currentUser.username.toUpperCase() + '123';
         }
-        function copyReferral() { const input = document.getElementById('akaunReferralCode'); input.select(); document.execCommand('copy'); alert('✅ Kod dicopy!'); }
+        function copyReferral() { const input = document.getElementById('akaunReferralCode'); input.select(); document.execCommand('copy'); alert('✅ Dicopy!'); }
 
         function openModal(id) { 
-            if(id === 'modalP2P') { document.getElementById('p2pSenderBalance').innerText = `RM ${insentifBalance.toFixed(2)}`; document.getElementById('p2pRecipient').value = ''; document.getElementById('p2pAmount').value = ''; document.getElementById('p2pNote').value = ''; }
-            if(id === 'modalPakej') { document.getElementById('pakejAmount').value = ''; document.getElementById('sponsorUser').value = ''; document.getElementById('repUser').value = ''; updatePackagePreview(); const note = document.getElementById('renewalNote'); if(currentUser && currentUser.lastPackageAmount > 0) { note.classList.remove('hidden'); note.innerHTML = `⚠️ Renewal: Min RM${currentUser.lastPackageAmount}.`; } else note.classList.add('hidden'); }
+            if(id === 'modalP2P') { document.getElementById('p2pSenderBalance').innerText = `RM ${insentifBalance.toFixed(2)}`; ['p2pRecipient','p2pAmount','p2pNote'].forEach(i => document.getElementById(i).value = ''); }
+            if(id === 'modalPakej') { ['pakejAmount','sponsorUser','repUser'].forEach(i => document.getElementById(i).value = ''); updatePackagePreview(); const note = document.getElementById('renewalNote'); if(currentUser && currentUser.lastPackageAmount > 0) { note.classList.remove('hidden'); note.innerHTML = `⚠️ Renewal min RM${currentUser.lastPackageAmount}.`; } else note.classList.add('hidden'); }
             if(id === 'modalTopup') updateTopupModalInfo();
             if(id === 'modalWDProfit') updateWDProfitInfo();
             if(id === 'modalWDInsentif') updateWDInsentifInfo();
@@ -1610,8 +1690,7 @@
         async function saveProfile() {
             const bankName = document.getElementById('bankNameInput').value.trim();
             const accountNo = document.getElementById('bankAccountInput').value.trim();
-            if (!bankName) { alert('Sila masukkan nama bank.'); return; }
-            if (!accountNo) { alert('Sila masukkan no akaun bank.'); return; }
+            if (!bankName || !accountNo) { alert('Isi nama bank & no akaun.'); return; }
             try {
                 const { doc, updateDoc } = window.FB;
                 const updates = { 'bankDetails.bankName': bankName, 'bankDetails.accountNo': accountNo };
@@ -1620,8 +1699,8 @@
                 await updateDoc(doc(window.db, "cb_users", currentUser.uid), updates);
                 updateBankStatusUI(bankName, accountNo);
                 playSuccessSound();
-                alert('✅ Maklumat Bank dikemaskini!');
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+                alert('✅ Dikemaskini!');
+            } catch (e) { alert('❌ ' + e.message); }
         }
 
         function renderHistory() {
@@ -1640,7 +1719,7 @@
                 else if(h.status === 'Active') badge = `<span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Active</span>`;
                 else if(h.status === 'Expired') badge = `<span class="bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Expired</span>`;
                 else if(h.status === 'Bonus') badge = `<span class="bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Bonus</span>`;
-                else if(h.status === 'Bonus Stopped') badge = `<span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Bonus Stopped</span>`;
+                else if(h.status === 'Bonus Stopped') badge = `<span class="bg-red-100 text-red-700 text-[10px] px-2 py-0.5 rounded-full font-bold">Stopped</span>`;
 
                 const div = document.createElement('div');
                 div.className = "bg-white border border-gray-100 p-3 rounded-lg shadow-sm flex justify-between items-center";
@@ -1650,15 +1729,15 @@
         }
 
         async function beliPakej() {
-            if (!currentUser) { alert("❌ Sila login."); return; }
+            if (!currentUser) return;
             if (packageData && packageData.status === 'active') { alert("❌ Anda sudah ada pakej aktif."); return; }
             const amount = parseFloat(document.getElementById('pakejAmount').value);
             const sponsor = document.getElementById('sponsorUser').value.trim().toLowerCase();
             const rep = document.getElementById('repUser').value.trim().toLowerCase();
-            if (isNaN(amount) || amount < 300 || amount > 100000) { alert("❌ RM300 - RM100,000."); return; }
+            if (isNaN(amount) || amount < 100 || amount > 100000) { alert("❌ RM100 - RM100,000."); return; }
             const finalAmount = Math.floor(amount);
-            if (currentUser.lastPackageAmount > 0 && finalAmount < currentUser.lastPackageAmount) { alert(`❌ RENEW: Min RM${currentUser.lastPackageAmount}.`); return; }
-            if (balance < finalAmount) { alert(`❌ Baki tak cukup. Baki: RM${balance.toFixed(2)}`); return; }
+            if (currentUser.lastPackageAmount > 0 && finalAmount < currentUser.lastPackageAmount) { alert(`❌ RENEW min RM${currentUser.lastPackageAmount}.`); return; }
+            if (balance < finalAmount) { alert(`❌ Baki tak cukup.`); return; }
 
             const btn = document.getElementById('beliPakejBtn'); btn.disabled = true; btn.innerText = 'Memproses...';
             try {
@@ -1666,15 +1745,15 @@
                 const maxReturn = finalAmount * 1.8;
                 const perWD = maxReturn / 3;
                 const newPackage = { amount: finalAmount, startDate: new Date().toISOString(), wdCount: 0, totalWithdrawn: 0, maxReturn, perWD, status: 'active' };
-                const newHistory = { id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Aktifkan Pakej', amount: -finalAmount, status: 'Active', description: `Pakej RM${finalAmount} | Profit harian: RM${(maxReturn/63).toFixed(2)} | 3x WD setiap 21 hari` };
+                const newHistory = { id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Aktifkan Pakej', amount: -finalAmount, status: 'Active', description: `Pakej RM${finalAmount}` };
                 const wasExpired = currentUser.bonusActive === false;
-                if (wasExpired) newHistory.description += ' | 🔄 BONUS RESUME';
                 
                 await updateDoc(doc(window.db, "cb_users", currentUser.uid), {
                     balance: balance - finalAmount, packageData: newPackage, lastPackageAmount: finalAmount,
                     bonusActive: true, bonusExpiredAt: null, history: [newHistory, ...(currentUser.history || [])]
                 });
 
+                // BONUS SPONSOR (10%) - Semua user
                 let sponsorMsg = '';
                 if (sponsor && sponsor !== currentUser.username) {
                     const sponsorQ = query(collection(window.db, "cb_users"), where("username", "==", sponsor));
@@ -1683,15 +1762,15 @@
                         const sponsorDoc = sponsorSnap.docs[0];
                         const sponsorData = sponsorDoc.data();
                         const bonusAmt = finalAmount * 0.1;
-                        if (sponsorData.bonusActive === false) { sponsorMsg = `\n⚠️ Sponsor bonus tamat.`; } 
-                        else {
-                            await updateDoc(doc(window.db, "cb_users", sponsorDoc.id), { insentifBalance: (sponsorData.insentifBalance || 0) + bonusAmt, history: [{ id: Date.now() + 1, date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Bonus Sponsor (10%)', amount: bonusAmt, status: 'Bonus', description: `Dari ${currentUser.username} (Pakej RM${finalAmount})` }, ...(sponsorData.history || [])] });
-                            await addUserNotification(sponsorDoc.id, '💰 Bonus Sponsor!', `Anda terima RM${bonusAmt.toFixed(2)} dari ${currentUser.username}`, '💰');
-                            sponsorMsg = `\n✅ Bonus Sponsor RM${bonusAmt.toFixed(2)}`;
+                        if (sponsorData.bonusActive !== false) {
+                            await updateDoc(doc(window.db, "cb_users", sponsorDoc.id), { insentifBalance: (sponsorData.insentifBalance || 0) + bonusAmt, history: [{ id: Date.now() + 1, date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Bonus Sponsor (10%)', amount: bonusAmt, status: 'Bonus', description: `Dari ${currentUser.username} (RM${finalAmount})` }, ...(sponsorData.history || [])] });
+                            await addUserNotification(sponsorDoc.id, '💰 Bonus Sponsor!', `Anda dapat RM${bonusAmt.toFixed(2)} dari ${currentUser.username}`, '💰');
+                            sponsorMsg = `\n✅ Sponsor RM${bonusAmt.toFixed(2)}`;
                         }
                     }
                 }
 
+                // BONUS REP (5%) - Hanya jika SPONSOR ada pakej aktif (RM100+)
                 let repMsg = '';
                 if (rep && rep !== currentUser.username) {
                     const repQ = query(collection(window.db, "cb_users"), where("username", "==", rep));
@@ -1699,19 +1778,22 @@
                     if (!repSnap.empty) {
                         const repDoc = repSnap.docs[0];
                         const repData = repDoc.data();
-                        const bonusAmt = finalAmount * 0.05;
-                        if (repData.bonusActive === false) { repMsg = `\n⚠️ Rep bonus tamat.`; } 
-                        else {
-                            await updateDoc(doc(window.db, "cb_users", repDoc.id), { insentifBalance: (repData.insentifBalance || 0) + bonusAmt, history: [{ id: Date.now() + 2, date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Bonus Representative (5%)', amount: bonusAmt, status: 'Bonus', description: `Dari ${currentUser.username}` }, ...(repData.history || [])] });
-                            await addUserNotification(repDoc.id, '🎁 Bonus Rep!', `Anda terima RM${bonusAmt.toFixed(2)}`, '🎁');
-                            repMsg = `\n✅ Bonus Rep RM${bonusAmt.toFixed(2)}`;
+                        // Semak rep ada pakej aktif (RM100+)
+                        const repHasPackage = repData.packageData && repData.packageData.status === 'active' && repData.packageData.amount >= 100;
+                        if (repHasPackage && repData.bonusActive !== false) {
+                            const bonusAmt = finalAmount * 0.05;
+                            await updateDoc(doc(window.db, "cb_users", repDoc.id), { insentifBalance: (repData.insentifBalance || 0) + bonusAmt, history: [{ id: Date.now() + 2, date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Bonus Rep (5%)', amount: bonusAmt, status: 'Bonus', description: `Dari ${currentUser.username}` }, ...(repData.history || [])] });
+                            await addUserNotification(repDoc.id, '🎁 Bonus Rep!', `Anda dapat RM${bonusAmt.toFixed(2)}`, '🎁');
+                            repMsg = `\n✅ Rep RM${bonusAmt.toFixed(2)}`;
+                        } else if (!repHasPackage) {
+                            repMsg = `\n⚠️ Rep tidak dapat bonus (perlu pakej RM100+)`;
                         }
                     }
                 }
 
-                const resumeMsg = wasExpired ? `\n\n🔄 BONUS DIAKTIFKAN SEMULA!` : '';
+                const resumeMsg = wasExpired ? `\n\n🔄 BONUS RESUME!` : '';
                 playSuccessSound();
-                alert(`✅ PAKEJ DIAKTIFKAN!\n\n📦 RM${finalAmount}\n💰 Pulangan: RM${maxReturn.toFixed(2)}\n📊 Profit harian: RM${(maxReturn/63).toFixed(2)}\n📅 WD: RM${perWD.toFixed(2)} setiap 21 hari${sponsorMsg}${repMsg}${resumeMsg}`);
+                alert(`✅ PAKEJ AKTIF!\n\n📦 RM${finalAmount}\n💰 Pulangan: RM${maxReturn.toFixed(2)}\n📊 Profit: RM${(maxReturn/63).toFixed(2)}/hari\n📅 WD: RM${perWD.toFixed(2)} setiap 21 hari${sponsorMsg}${repMsg}${resumeMsg}`);
                 closeModal('modalPakej');
             } catch (e) { playErrorSound(); alert('❌ Ralat: ' + e.message); }
             finally { btn.disabled = false; btn.innerText = '🚀 Aktifkan Pakej'; }
@@ -1723,13 +1805,13 @@
             try {
                 const { addDoc, collection, doc, updateDoc } = window.FB;
                 await addDoc(collection(window.db, "cb_requests"), { username: currentUser.username, uid: currentUser.uid, type: 'TOPUP', amount: amount, status: 'pending', createdAt: new Date().toISOString() });
-                await updateDoc(doc(window.db, "cb_users", currentUser.uid), { history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Topup', amount: amount, status: 'Pending', description: 'Menunggu kelulusan Admin' }, ...(currentUser.history || [])] });
-                await addUserNotification(currentUser.uid, '📥 Topup Dihantar', `Permohonan topup RM${amount.toFixed(2)} sedang diproses.`, '⏳');
+                await updateDoc(doc(window.db, "cb_users", currentUser.uid), { history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Topup', amount: amount, status: 'Pending', description: 'Menunggu Admin' }, ...(currentUser.history || [])] });
+                await addUserNotification(currentUser.uid, '📥 Topup Dihantar', `RM${amount.toFixed(2)} sedang diproses.`, '⏳');
                 playSuccessSound();
-                alert(`✅ Permohonan Topup RM${amount} dihantar.`);
+                alert(`✅ Topup RM${amount} dihantar.`);
                 closeModal('modalTopup');
                 document.getElementById('topupAmount').value = '';
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+            } catch (e) { alert('❌ ' + e.message); }
         }
 
         function updateWDProfitInfo() {
@@ -1737,14 +1819,14 @@
             const breakdown = document.getElementById('wdProfitBreakdown');
             const liveStatus = document.getElementById('wdProfitLiveStatus');
             const btnSubmit = document.getElementById('btnWDSubmit');
-            if(!packageData || packageData.status !== 'active') { infoBox.innerHTML = '<p class="text-red-600">Tiada pakej aktif.</p>'; breakdown.classList.add('hidden'); liveStatus.classList.add('hidden'); btnSubmit.disabled = true; return; }
+            if(!packageData || packageData.status !== 'active') { infoBox.innerHTML = '<p class="text-red-600">Tiada pakej.</p>'; breakdown.classList.add('hidden'); liveStatus.classList.add('hidden'); btnSubmit.disabled = true; return; }
             const now = Date.now();
             const startMs = new Date(packageData.startDate).getTime();
             const cycleStartMs = startMs + (packageData.wdCount * 21 * 86400000);
             const cycleDays = Math.max(0, Math.min((now - cycleStartMs) / 86400000, 21));
             const dailyRate = packageData.maxReturn / 63;
             const cycleEarned = cycleDays * dailyRate;
-            infoBox.innerHTML = `<p class="font-bold text-blue-800 mb-1">Pakej: RM${packageData.amount.toFixed(2)}</p><p>WD ke-${packageData.wdCount + 1} / 3</p><p class="text-xs">Jumlah WD: RM${packageData.perWD.toFixed(2)}</p>`;
+            infoBox.innerHTML = `<p class="font-bold text-blue-800 mb-1">Pakej: RM${packageData.amount.toFixed(2)}</p><p>WD ke-${packageData.wdCount + 1}/3</p><p class="text-xs">Jumlah WD: RM${packageData.perWD.toFixed(2)}</p>`;
             document.getElementById('wdLiveAccumulated').innerText = `RM ${cycleEarned.toFixed(2)}`;
             document.getElementById('wdLiveDay').innerText = `${Math.floor(cycleDays)}/21`;
             const wdStatEl = document.getElementById('wdLiveStatus');
@@ -1764,39 +1846,26 @@
         }
 
         async function handleWDProfit() {
-            if (!packageData || packageData.status !== 'active') { alert("Tiada pakej aktif."); return; }
+            if (!packageData || packageData.status !== 'active') { alert("Tiada pakej."); return; }
             const now = Date.now();
             const startMs = new Date(packageData.startDate).getTime();
             const cycleStartMs = startMs + (packageData.wdCount * 21 * 86400000);
             const cycleDays = (now - cycleStartMs) / 86400000;
-            if (cycleDays < 21) { alert(`Belum matang. Tunggu ${Math.ceil(21 - cycleDays)} hari.`); return; }
-            if (packageData.wdCount >= 3) { alert("Had WD 3 kali dicapai."); return; }
-            if (!bankDetails.bankName || !bankDetails.accountNo) { alert("Sila set Bank & No Akaun."); return; }
+            if (cycleDays < 21) { alert(`Tunggu ${Math.ceil(21 - cycleDays)} hari.`); return; }
+            if (packageData.wdCount >= 3) { alert("Had WD 3 kali."); return; }
+            if (!bankDetails.bankName || !bankDetails.accountNo) { alert("Set Bank."); return; }
             const grossAmount = packageData.perWD;
             const rate = adminSettings.serviceChargePercent !== undefined ? adminSettings.serviceChargePercent : 10;
             const serviceCharge = grossAmount * (rate / 100);
             const netAmount = grossAmount - serviceCharge;
             try {
-                const { addDoc, collection, doc, updateDoc, query, where, getDocs } = window.FB;
+                const { addDoc, collection, doc, updateDoc } = window.FB;
                 await addDoc(collection(window.db, "cb_requests"), { username: currentUser.username, uid: currentUser.uid, type: 'WD_PROFIT', amount: grossAmount, serviceCharge: serviceCharge, serviceChargePercent: rate, netAmount: netAmount, status: 'pending', bank: bankDetails.bankName, accountNo: bankDetails.accountNo, wdNumber: packageData.wdCount + 1, createdAt: new Date().toISOString() });
-                await updateDoc(doc(window.db, "cb_users", currentUser.uid), { history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'WD Profit', amount: -netAmount, status: 'Pending', description: `WD #${packageData.wdCount + 1} | Gross: RM${grossAmount.toFixed(2)} - Caj ${rate}%: RM${serviceCharge.toFixed(2)} | Net: RM${netAmount.toFixed(2)}` }, ...(currentUser.history || [])] });
-                await addUserNotification(currentUser.uid, '💰 WD Profit Dihantar', `WD #${packageData.wdCount + 1}\nGross: RM${grossAmount.toFixed(2)}\nNet: RM${netAmount.toFixed(2)}`, '⏳');
-                if (currentUser.sponsorUsername) {
-                    const uplineQ = query(collection(window.db, "cb_users"), where("username", "==", currentUser.sponsorUsername));
-                    const uplineSnap = await getDocs(uplineQ);
-                    if (!uplineSnap.empty) {
-                        const uplineDoc = uplineSnap.docs[0];
-                        const uplineData = uplineDoc.data();
-                        const uplinePackage = uplineData.packageData;
-                        if (uplinePackage && uplinePackage.status === 'active' && uplinePackage.amount >= 1000 && uplineData.bonusActive !== false) {
-                            const bonusWD = grossAmount * 0.05;
-                            await updateDoc(doc(window.db, "cb_users", uplineDoc.id), { insentifBalance: (uplineData.insentifBalance || 0) + bonusWD, history: [{ id: Date.now() + 3, date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Bonus WD Downline (5%)', amount: bonusWD, status: 'Bonus', description: `Dari ${currentUser.username} (WD #${packageData.wdCount + 1})` }, ...(uplineData.history || [])] });
-                            await addUserNotification(uplineDoc.id, '💎 Bonus WD Downline', `Anda terima RM${bonusWD.toFixed(2)} dari WD ${currentUser.username}`, '💎');
-                        }
-                    }
-                }
+                await updateDoc(doc(window.db, "cb_users", currentUser.uid), { history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'WD Profit', amount: -netAmount, status: 'Pending', description: `WD #${packageData.wdCount + 1} | Gross: RM${grossAmount.toFixed(2)} - Caj ${rate}%: RM${serviceCharge.toFixed(2)}` }, ...(currentUser.history || [])] });
+                await addUserNotification(currentUser.uid, '💰 WD Profit Dihantar', `WD #${packageData.wdCount + 1} RM${netAmount.toFixed(2)}`, '⏳');
+                await processWDDownlineBonus(currentUser.username, currentUser.sponsorUsername, grossAmount, packageData.wdCount + 1);
                 playSuccessSound();
-                alert(`✅ WD Profit dihantar!\n\n💰 Gross: RM${grossAmount.toFixed(2)}\n💵 Caj ${rate}%: -RM${serviceCharge.toFixed(2)}\n✅ Anda Terima: RM${netAmount.toFixed(2)}`);
+                alert(`✅ WD Profit!\n\nGross: RM${grossAmount.toFixed(2)}\nCaj ${rate}%: -RM${serviceCharge.toFixed(2)}\nTerima: RM${netAmount.toFixed(2)}`);
                 closeModal('modalWDProfit');
             } catch (e) { alert('❌ ' + e.message); }
         }
@@ -1806,9 +1875,8 @@
             document.getElementById('wdInsentifAmount').value = '';
             document.getElementById('wdInsentifBreakdown').classList.add('hidden');
             const alertBox = document.getElementById('wdInsentifAlert');
-            if (currentUser.bonusActive === false) { alertBox.className = "text-xs p-3 rounded-lg mb-4 bg-red-50 text-red-800 border border-red-300"; alertBox.innerHTML = "🚫 <b>BONUS TAMAT</b>."; } 
-            else if (!packageData || packageData.status !== 'active' || packageData.amount < 300) { alertBox.className = "text-xs p-3 rounded-lg mb-4 bg-yellow-50 text-yellow-800 border border-yellow-300"; alertBox.innerHTML = "⚠️ Perlu pakej aktif min <b>RM300</b>."; } 
-            else { alertBox.className = "text-xs p-3 rounded-lg mb-4 bg-green-50 text-green-800 border border-green-300"; alertBox.innerHTML = "✅ Semua syarat dipenuhi."; }
+            if (currentUser.bonusActive === false) { alertBox.className = "text-xs p-3 rounded-lg mb-4 bg-red-50 text-red-800 border border-red-300"; alertBox.innerHTML = "🚫 <b>BONUS TAMAT</b> - Aktifkan pakej baru."; } 
+            else { alertBox.className = "text-xs p-3 rounded-lg mb-4 bg-green-50 text-green-800 border border-green-300"; alertBox.innerHTML = "✅ <b>Boleh WD bonus bila-bila masa!</b>"; }
         }
         function updateWDInsentifBreakdown() {
             const gross = parseFloat(document.getElementById('wdInsentifAmount').value) || 0;
@@ -1824,23 +1892,21 @@
             breakdown.classList.remove('hidden');
         }
         async function handleWDInsentif() {
-            if (currentUser.bonusActive === false) { alert("🚫 BONUS TAMAT!"); return; }
-            if (!packageData || packageData.status !== 'active') { alert("⚠️ Perlu pakej aktif min RM300."); return; }
-            if (packageData.amount < 300) { alert(`⚠️ Pakej RM${packageData.amount} < RM300.`); return; }
+            if (currentUser.bonusActive === false) { alert("🚫 BONUS TAMAT!\n\nAktifkan pakej baru untuk resume bonus."); return; }
+            if (!bankDetails.bankName || !bankDetails.accountNo) { alert("Sila set Bank & No Akaun di Profile."); return; }
             const grossAmount = parseFloat(document.getElementById('wdInsentifAmount').value);
             if (isNaN(grossAmount) || grossAmount <= 0) { alert("Jumlah tidak sah."); return; }
             if (grossAmount > insentifBalance) { alert(`Baki: RM${insentifBalance.toFixed(2)}`); return; }
-            if (!bankDetails.bankName || !bankDetails.accountNo) { alert("Sila set Bank & No Akaun."); return; }
             const rate = adminSettings.serviceChargePercent !== undefined ? adminSettings.serviceChargePercent : 10;
             const serviceCharge = grossAmount * (rate / 100);
             const netAmount = grossAmount - serviceCharge;
             try {
                 const { addDoc, collection, doc, updateDoc } = window.FB;
                 await addDoc(collection(window.db, "cb_requests"), { username: currentUser.username, uid: currentUser.uid, type: 'WD_INSENTIF', amount: grossAmount, serviceCharge: serviceCharge, serviceChargePercent: rate, netAmount: netAmount, status: 'pending', bank: bankDetails.bankName, accountNo: bankDetails.accountNo, createdAt: new Date().toISOString() });
-                await updateDoc(doc(window.db, "cb_users", currentUser.uid), { history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'WD Insentif', amount: -netAmount, status: 'Pending', description: `Gross: RM${grossAmount.toFixed(2)} - Caj ${rate}%: RM${serviceCharge.toFixed(2)} | Net: RM${netAmount.toFixed(2)}` }, ...(currentUser.history || [])] });
-                await addUserNotification(currentUser.uid, '🎁 WD Insentif Dihantar', `Gross: RM${grossAmount.toFixed(2)}\nNet: RM${netAmount.toFixed(2)}`, '⏳');
+                await updateDoc(doc(window.db, "cb_users", currentUser.uid), { history: [{ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'WD Bonus', amount: -netAmount, status: 'Pending', description: `Gross: RM${grossAmount.toFixed(2)} - Caj ${rate}%` }, ...(currentUser.history || [])] });
+                await addUserNotification(currentUser.uid, '🎁 WD Bonus Dihantar', `RM${netAmount.toFixed(2)}`, '⏳');
                 playSuccessSound();
-                alert(`✅ WD Insentif dihantar!\n\n💰 Gross: RM${grossAmount.toFixed(2)}\n💵 Caj: -RM${serviceCharge.toFixed(2)}\n✅ Terima: RM${netAmount.toFixed(2)}`);
+                alert(`✅ WD Bonus!\n\nGross: RM${grossAmount.toFixed(2)}\nCaj: -RM${serviceCharge.toFixed(2)}\nTerima: RM${netAmount.toFixed(2)}`);
                 closeModal('modalWDInsentif');
             } catch (e) { alert('❌ ' + e.message); }
         }
@@ -1861,7 +1927,7 @@
             const bankName = document.getElementById('adminBankName').value.trim();
             const accountNo = document.getElementById('adminAccountNo').value.trim();
             const accountName = document.getElementById('adminAccountName').value.trim();
-            if (!bankName || !accountNo) { alert('Sila isi Nama Bank & No Akaun.'); return; }
+            if (!bankName || !accountNo) { alert('Isi Nama Bank & No Akaun.'); return; }
             try {
                 const { doc, setDoc } = window.FB;
                 const updates = { bankName, accountNo, accountName };
@@ -1869,8 +1935,8 @@
                 if (qrPreview && qrPreview.src && qrPreview.src.startsWith('data:image')) updates.qrBase64 = qrPreview.src;
                 await setDoc(doc(window.db, "cb_settings", "payment"), updates, { merge: true });
                 playSuccessSound();
-                alert('✅ Tetapan disimpan!');
-            } catch (e) { alert('❌ Ralat: ' + e.message); }
+                alert('✅ Disimpan!');
+            } catch (e) { alert('❌ ' + e.message); }
         }
 
         let adminUserUnsub = null, adminReqUnsub = null;
@@ -1892,13 +1958,12 @@
             if (normalUsers.length === 0) { list.innerHTML = '<p class="text-xs text-gray-500 text-center py-2">Tiada pengguna.</p>'; return; }
             list.innerHTML = '';
             normalUsers.forEach(u => {
-                const bonusStatus = u.bonusActive === false ? '<span class="text-red-500 font-bold">🚫 TAMAT</span>' : '<span class="text-green-500 font-bold">✅ AKTIF</span>';
-                const pkgInfo = u.packageData && u.packageData.status === 'active' ? `Aktif - RM${u.packageData.amount}` : 'Tiada';
-                const hasSecurity = u.securityQuestion && u.securityAnswer;
+                const bonusStatus = u.bonusActive === false ? '<span class="text-red-500 font-bold">🚫</span>' : '<span class="text-green-500 font-bold">✅</span>';
+                const pkgInfo = u.packageData && u.packageData.status === 'active' ? `Aktif - RM${u.packageData.amount}` : 'Tiada (FREE)';
                 const heirInfo = u.heirInfo && u.heirInfo.name ? `${u.heirInfo.name} (${u.heirInfo.relation}) - ${u.heirInfo.phone}` : '<span class="text-gray-400">Belum set</span>';
                 const div = document.createElement('div');
                 div.className = "bg-gray-50 p-3 rounded-lg border text-xs";
-                div.innerHTML = `<div class="flex justify-between items-start"><div class="flex-1"><p><b>${u.fullName}</b> (@${u.username})</p><p>HP: ${u.phone}</p><p>Penaja: ${u.sponsorUsername || 'Tiada'}</p><p>Bank: ${u.bankDetails && u.bankDetails.bankName ? u.bankDetails.bankName : '<span class="text-red-400">Belum set</span>'}</p><p>No Akaun: ${u.bankDetails && u.bankDetails.accountNo ? `<span class="font-mono">${u.bankDetails.accountNo}</span>` : '<span class="text-red-400">Belum set</span>'}</p><p>Pewaris: ${heirInfo}</p><p>Pakej: ${pkgInfo}</p><p>Bonus: ${bonusStatus}</p><p>Keselamatan: ${hasSecurity ? '<span class="text-green-600">✅</span>' : '<span class="text-red-400">❌</span>'}</p><button onclick="adminResetUserPassword('${u.id}', '${u.username}')" class="mt-2 bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 rounded text-[10px] font-bold">🔑 Reset Password</button></div><div class="text-right"><p class="text-[10px] text-blue-500">💰 Utama</p><p class="font-bold text-blue-600">RM ${(u.balance || 0).toFixed(2)}</p><p class="text-[10px] text-green-500 mt-1">🎁 Insentif</p><p class="font-bold text-green-600">RM ${(u.insentifBalance || 0).toFixed(2)}</p></div></div>`;
+                div.innerHTML = `<div class="flex justify-between items-start"><div class="flex-1"><p><b>${u.fullName}</b> (@${u.username})</p><p>HP: ${u.phone}</p><p>Penaja: ${u.sponsorUsername || 'Tiada'}</p><p>Bank: ${u.bankDetails && u.bankDetails.bankName ? u.bankDetails.bankName : '<span class="text-red-400">Belum set</span>'}</p><p>No Akaun: ${u.bankDetails && u.bankDetails.accountNo ? `<span class="font-mono">${u.bankDetails.accountNo}</span>` : '<span class="text-red-400">-</span>'}</p><p>Pewaris: ${heirInfo}</p><p>Pakej: ${pkgInfo}</p><p>Bonus: ${bonusStatus}</p><button onclick="adminResetUserPassword('${u.id}', '${u.username}')" class="mt-2 bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 rounded text-[10px] font-bold">🔑 Reset</button></div><div class="text-right"><p class="text-[10px] text-blue-500">💰 Utama</p><p class="font-bold text-blue-600">RM ${(u.balance || 0).toFixed(2)}</p><p class="text-[10px] text-green-500 mt-1">🎁 Insentif</p><p class="font-bold text-green-600">RM ${(u.insentifBalance || 0).toFixed(2)}</p></div></div>`;
                 list.appendChild(div);
             });
         }
@@ -1913,12 +1978,12 @@
             requests.forEach(req => {
                 let label = req.type, color = 'text-yellow-600';
                 if(req.type === 'WD_PROFIT') { label = '💰 WD PROFIT'; color = 'text-blue-600'; }
-                if(req.type === 'WD_INSENTIF') { label = '🎁 WD INSENTIF'; color = 'text-green-600'; }
+                if(req.type === 'WD_INSENTIF') { label = '🎁 WD BONUS'; color = 'text-green-600'; }
                 if(req.type === 'TOPUP') { label = '📥 TOPUP'; color = 'text-yellow-600'; }
                 let bankInfo = '';
-                if (req.bank) { bankInfo = `<div class="mt-2 bg-white p-2 rounded border border-gray-200"><p class="text-[10px] text-gray-500 mb-1">🏦 Bank User:</p><div class="flex justify-between items-center"><div><p class="text-xs"><b>Bank:</b> ${req.bank}</p><p class="text-xs"><b>No:</b> <span class="font-mono font-bold text-blue-700">${req.accountNo || 'Tiada'}</span></p></div>${req.accountNo ? `<button onclick="copyText('${req.accountNo}')" class="copy-btn bg-blue-500 text-white px-2 py-1 rounded text-[10px] font-bold">📋 Copy</button>` : ''}</div></div>`; }
+                if (req.bank) { bankInfo = `<div class="mt-2 bg-white p-2 rounded border border-gray-200"><p class="text-[10px] text-gray-500 mb-1">🏦 Bank:</p><div class="flex justify-between items-center"><div><p class="text-xs"><b>${req.bank}</b></p><p class="text-xs font-mono">${req.accountNo || '-'}</p></div>${req.accountNo ? `<button onclick="copyText('${req.accountNo}')" class="copy-btn bg-blue-500 text-white px-2 py-1 rounded text-[10px] font-bold">📋 Copy</button>` : ''}</div></div>`; }
                 let breakdownInfo = '';
-                if ((req.type === 'WD_PROFIT' || req.type === 'WD_INSENTIF') && req.serviceCharge !== undefined) { breakdownInfo = `<div class="mt-2 bg-yellow-50 p-2 rounded border border-yellow-200 text-xs"><p class="text-[10px] text-yellow-700 font-bold mb-1">💵 Caj:</p><div class="flex justify-between py-0.5"><span>Gross:</span><span class="font-bold">RM ${req.amount.toFixed(2)}</span></div><div class="flex justify-between py-0.5 text-red-600"><span>Caj (${req.serviceChargePercent}%):</span><span class="font-bold">- RM ${req.serviceCharge.toFixed(2)}</span></div><div class="flex justify-between py-0.5 border-t border-yellow-300 mt-1 pt-1"><span class="font-bold">User Terima:</span><span class="font-bold text-green-700">RM ${req.netAmount.toFixed(2)}</span></div></div>`; }
+                if ((req.type === 'WD_PROFIT' || req.type === 'WD_INSENTIF') && req.serviceCharge !== undefined) { breakdownInfo = `<div class="mt-2 bg-yellow-50 p-2 rounded border border-yellow-200 text-xs"><div class="flex justify-between"><span>Gross:</span><span class="font-bold">RM ${req.amount.toFixed(2)}</span></div><div class="flex justify-between text-red-600"><span>Caj (${req.serviceChargePercent}%):</span><span class="font-bold">- RM ${req.serviceCharge.toFixed(2)}</span></div><div class="flex justify-between border-t pt-1"><span class="font-bold">Terima:</span><span class="font-bold text-green-700">RM ${req.netAmount.toFixed(2)}</span></div></div>`; }
                 const div = document.createElement('div');
                 div.className = "p-3 bg-gray-50 border rounded-lg";
                 div.innerHTML = `<div class="flex justify-between items-start mb-2"><div><p class="font-bold text-sm ${color}">${label} ${req.wdNumber ? '(#' + req.wdNumber + ')' : ''}</p><p class="text-xs text-gray-600"><b>${req.username}</b> | RM${req.amount.toFixed(2)}</p></div><div class="flex gap-2"><button onclick="approveRequest('${req.id}')" class="bg-green-500 text-white px-3 py-1 rounded text-xs font-bold">Approve</button><button onclick="rejectRequest('${req.id}')" class="bg-red-500 text-white px-3 py-1 rounded text-xs font-bold">Reject</button></div></div>${bankInfo}${breakdownInfo}`;
@@ -1931,16 +1996,16 @@
                 const { doc, getDoc, updateDoc, collection, query, where, getDocs } = window.FB;
                 const reqRef = doc(window.db, "cb_requests", reqId);
                 const reqSnap = await getDoc(reqRef);
-                if (!reqSnap.exists()) { alert("Not found."); return; }
+                if (!reqSnap.exists()) return;
                 const req = reqSnap.data();
                 const userQ = query(collection(window.db, "cb_users"), where("username", "==", req.username));
                 const userSnap = await getDocs(userQ);
-                if (userSnap.empty) { alert("User not found."); return; }
+                if (userSnap.empty) return;
                 const userDoc = userSnap.docs[0];
                 const userData = userDoc.data();
                 const history = (userData.history || []).map(h => { if (h.status === 'Pending' && Math.abs(h.amount) === (req.netAmount || req.amount)) return { ...h, status: 'Completed' }; return h; });
                 const updates = { history };
-                if (req.type === 'TOPUP') { updates.balance = (userData.balance || 0) + req.amount; await addUserNotification(userDoc.id, '✅ Topup Diluluskan!', `Topup RM${req.amount.toFixed(2)} telah dikreditkan.`, '✅'); } 
+                if (req.type === 'TOPUP') { updates.balance = (userData.balance || 0) + req.amount; await addUserNotification(userDoc.id, '✅ Topup Diluluskan!', `RM${req.amount.toFixed(2)} dikreditkan.`, '✅'); } 
                 else if (req.type === 'WD_PROFIT') {
                     if (userData.packageData) {
                         const newPkg = { ...userData.packageData };
@@ -1951,19 +2016,18 @@
                             newPkg.status = 'completed';
                             updates.bonusActive = false;
                             updates.bonusExpiredAt = new Date().toISOString();
-                            history.unshift({ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Pakej Tamat (180%)', amount: 0, status: 'Expired', description: `Pakej selesai. BONUS STOP. Renew min RM${newPkg.amount}.` });
-                            history.unshift({ id: Date.now() + 1, date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: '🚫 Bonus Sistem Tamat', amount: 0, status: 'Bonus Stopped', description: `Semua bonus STOP.` });
-                            await addUserNotification(userDoc.id, '🚫 Pakej Tamat', `Pakej selesai 180%. BONUS STOP. Renew min RM${newPkg.amount}.`, '🚫');
-                        } else { await addUserNotification(userDoc.id, '💰 WD Profit Diluluskan!', `WD #${newPkg.wdCount} RM${req.amount.toFixed(2)} telah diproses.`, '💰'); }
+                            history.unshift({ id: Date.now(), date: new Date().toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' }), type: 'Pakej Tamat (180%)', amount: 0, status: 'Expired', description: `Selesai. Renew min RM${newPkg.amount}.` });
+                            await addUserNotification(userDoc.id, '🚫 Pakej Tamat', `Selesai 180%.`, '🚫');
+                        } else { await addUserNotification(userDoc.id, '💰 WD Diluluskan!', `WD #${newPkg.wdCount} RM${req.amount.toFixed(2)}`, '💰'); }
                         updates.packageData = newPkg;
                     }
                 } 
-                else if (req.type === 'WD_INSENTIF') { updates.insentifBalance = Math.max(0, (userData.insentifBalance || 0) - req.amount); await addUserNotification(userDoc.id, '🎁 WD Insentif Diluluskan!', `WD RM${req.amount.toFixed(2)} telah diproses.`, '🎁'); }
+                else if (req.type === 'WD_INSENTIF') { updates.insentifBalance = Math.max(0, (userData.insentifBalance || 0) - req.amount); await addUserNotification(userDoc.id, '🎁 WD Bonus Diluluskan!', `RM${req.amount.toFixed(2)} diproses.`, '🎁'); }
                 await updateDoc(doc(window.db, "cb_users", userDoc.id), updates);
                 await updateDoc(reqRef, { status: 'approved' });
                 playSuccessSound();
                 alert(`✅ ${req.type} RM${req.amount} DILULUSKAN.`);
-            } catch (e) { console.error(e); alert('❌ Ralat: ' + e.message); }
+            } catch (e) { alert('❌ ' + e.message); }
         }
         async function rejectRequest(reqId) {
             try {
@@ -1979,7 +2043,7 @@
                     const userData = userDoc.data();
                     const history = (userData.history || []).map(h => { if (h.status === 'Pending' && Math.abs(h.amount) === (req.netAmount || req.amount)) return { ...h, status: 'Rejected' }; return h; });
                     await updateDoc(doc(window.db, "cb_users", userDoc.id), { history });
-                    await addUserNotification(userDoc.id, '❌ Permohonan Ditolak', `${req.type} RM${req.amount.toFixed(2)} ditolak.`, '❌');
+                    await addUserNotification(userDoc.id, '❌ Ditolak', `${req.type} RM${req.amount.toFixed(2)} ditolak.`, '❌');
                 }
                 await updateDoc(reqRef, { status: 'rejected' });
                 playErrorSound();
@@ -1987,48 +2051,18 @@
             } catch (e) { alert('❌ ' + e.message); }
         }
 
-        window.handleLogin = handleLogin;
-        window.handleRegister = handleRegister;
-        window.handleLogout = handleLogout;
-        window.handleAdminLogin = handleAdminLogin;
-        window.hideAdminForm = hideAdminForm;
-        window.toggleAuthForm = toggleAuthForm;
-        window.switchTab = switchTab;
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-        window.beliPakej = beliPakej;
-        window.hantarTopup = hantarTopup;
-        window.handleWDProfit = handleWDProfit;
-        window.handleWDInsentif = handleWDInsentif;
-        window.updateWDInsentifBreakdown = updateWDInsentifBreakdown;
-        window.saveProfile = saveProfile;
-        window.handleQRUpload = handleQRUpload;
-        window.handleAdminQRUpload = handleAdminQRUpload;
-        window.copyReferral = copyReferral;
-        window.copyReferralCode = copyReferralCode;
-        window.copyReferralLink = copyReferralLink;
-        window.clearReferral = clearReferral;
-        window.copyAdminAccountNo = copyAdminAccountNo;
-        window.copyText = copyText;
-        window.toggleAdminSettings = toggleAdminSettings;
-        window.saveAdminSettings = saveAdminSettings;
-        window.saveServiceCharge = saveServiceCharge;
-        window.approveRequest = approveRequest;
-        window.rejectRequest = rejectRequest;
-        window.toggleNotificationPanel = toggleNotificationPanel;
-        window.markAllNotifRead = markAllNotifRead;
-        window.sendBroadcast = sendBroadcast;
-        window.deleteBroadcast = deleteBroadcast;
-        window.openResetModal = openResetModal;
-        window.resetFindUser = resetFindUser;
-        window.resetVerifyAnswer = resetVerifyAnswer;
-        window.resetSavePassword = resetSavePassword;
-        window.resetBackToStep1 = resetBackToStep1;
-        window.adminResetUserPassword = adminResetUserPassword;
-        window.handleP2PTransfer = handleP2PTransfer;
-        window.saveHeirInfo = saveHeirInfo;
-        window.adminAdjustCredit = adminAdjustCredit;
-        window.loadAdjustmentLog = loadAdjustmentLog;
+        // ==================== EXPOSE GLOBAL ====================
+        Object.assign(window, {
+            handleLogin, handleRegister, handleLogout, handleAdminLogin, hideAdminForm, toggleAuthForm,
+            switchTab, openModal, closeModal, beliPakej, hantarTopup, handleWDProfit, handleWDInsentif,
+            updateWDInsentifBreakdown, saveProfile, handleQRUpload, handleAdminQRUpload,
+            copyReferral, copyReferralCode, copyReferralLink, clearReferral, copyAdminAccountNo, copyText,
+            toggleAdminSettings, saveAdminSettings, saveServiceCharge, approveRequest, rejectRequest,
+            toggleNotificationPanel, markAllNotifRead, sendBroadcast, deleteBroadcast,
+            openResetModal, resetFindUser, resetVerifyAnswer, resetSavePassword, resetBackToStep1,
+            adminResetUserPassword, handleP2PTransfer, saveHeirInfo, adminAdjustCredit, loadAdjustmentLog,
+            changeUserPassword
+        });
     </script>
 </body>
 </html>
